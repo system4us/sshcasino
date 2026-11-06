@@ -1,0 +1,91 @@
+---
+import CyberIcon from './CyberIcon.astro';
+
+interface Props {
+  variant?: 'banner' | 'compact';
+}
+const { variant = 'banner' } = Astro.props;
+---
+
+{variant === 'banner' ? (
+  <section class="relative overflow-hidden rounded-3xl border border-neon-green/35 bg-gradient-to-br from-[#08120e] via-vault to-obsidian p-6 sm:p-10 shadow-neon-green my-14">
+    <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-neon-green/10 blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-neon-cyan/5 blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <!-- Left 8 Cols: Copy & Feature Pills -->
+      <div class="lg:col-span-8 space-y-4">
+        <div class="inline-flex items-center gap-2 rounded-full border border-neon-green/40 bg-neon-green/10 px-3.5 py-1 text-[11px] font-mono uppercase tracking-widest text-neon-green">
+          <span class="h-2 w-2 rounded-full bg-neon-green animate-ping"></span>
+          <span>REALITY CHECK // SECURITY INTERVENTION</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-display font-black tracking-tight text-white leading-tight">
+          YOUR PRODUCTION IS <span class="text-neon-green">NOT</span> A GAMBLING CHIP.
+        </h2>
+
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+          Laughing at <code class="text-neon-gold font-mono text-xs sm:text-sm bg-black/60 border border-slate-800 px-1.5 py-0.5 rounded">chmod 777 ~/.ssh/id_rsa</code> is fun—until you realize your team still shares static root SSH keys over Slack, leaves bastion ports open to <code class="text-neon-red font-mono text-xs sm:text-sm bg-black/60 border border-slate-800 px-1.5 py-0.5 rounded">0.0.0.0/0</code>, and hasn't audited server access since 2022.
+        </p>
+
+        <div class="pt-1 flex flex-wrap items-center gap-2 text-[11px] font-mono text-slate-300">
+          <span class="px-2.5 py-1 rounded-md border border-slate-800 bg-obsidian/90 text-neon-green">
+            ✔ Zero-Standing Privileges
+          </span>
+          <span class="px-2.5 py-1 rounded-md border border-slate-800 bg-obsidian/90 text-neon-cyan">
+            ✔ Ephemeral SSH Certificates
+          </span>
+          <span class="px-2.5 py-1 rounded-md border border-slate-800 bg-obsidian/90 text-neon-gold">
+            ✔ Full Session Recording
+          </span>
+        </div>
+      </div>
+
+      <!-- Right 4 Cols: Centered CTA Card -->
+      <div class="lg:col-span-4">
+        <div class="rounded-2xl border border-neon-green/30 bg-obsidian/90 p-5 sm:p-6 flex flex-col items-center text-center space-y-4 shadow-xl">
+          <div class="h-12 w-12 rounded-xl border border-neon-green/50 bg-neon-green/10 flex items-center justify-center text-neon-green">
+            <CyberIcon name="shield" class="w-6 h-6" />
+          </div>
+          <div class="space-y-1">
+            <div class="text-xs font-mono font-bold uppercase tracking-widest text-white">
+              PROTECT WHAT MATTERS
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Stop playing Russian Roulette with your SSH keys, Kubernetes clusters, and cloud credentials.
+            </p>
+          </div>
+          <a
+            href="https://system4us.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-casino-primary w-full inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-xs font-mono font-black uppercase tracking-widest"
+          >
+            <span>DISCOVER SYSTEM4US.COM</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+) : (
+  <div class="rounded-2xl border border-neon-green/30 bg-gradient-to-r from-[#08120e] via-vault to-obsidian p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="space-y-1 text-center md:text-left">
+      <div class="text-xs font-mono font-bold uppercase tracking-wider text-neon-green flex items-center justify-center md:justify-start gap-2">
+        <CyberIcon name="shield" class="w-4 h-4 shrink-0" />
+        <span>TIRED OF GAMBLING WITH UNMANAGED SSH KEYS?</span>
+      </div>
+      <p class="text-xs text-slate-300">
+        Your production is not a gambling chip. Lock down SSH, Kubernetes & Database access at <strong class="text-white">system4us.com</strong> before the House wins.
+      </p>
+    </div>
+    <a
+      href="https://system4us.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-casino-primary shrink-0 rounded-xl px-5 py-3 text-xs font-mono font-black uppercase tracking-widest"
+    >
+      VISIT SYSTEM4US.COM ↗
+    </a>
+  </div>
+)}

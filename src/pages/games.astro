@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SloganThreeBanner from '../components/SloganThreeBanner.astro';
+import SecurityPromoBanner from '../components/SecurityPromoBanner.astro';
+import CyberIcon from '../components/CyberIcon.astro';
+import { games, withBase } from '../data/casinoData';
+---
+
+<BaseLayout
+  title="Our Games — sshCasino | High-Stakes Production Infrastructure Tables"
+  description="Explore SSH Blackjack, AWS Roulette, Database Poker, Kubernetes Craps, and DevOps Russian Roulette. Official house rules and catastrophic odds."
+>
+  <section class="py-14 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="max-w-3xl space-y-4 mb-10">
+      <div class="inline-flex items-center gap-2 rounded-full border border-neon-green/40 bg-neon-green/10 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-neon-green">
+        <CyberIcon name="cards" class="w-4 h-4" />
+        <span>OFFICIAL FLOOR RULEBOOK & TABLE ODDS</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-display font-black text-white">
+        OUR <span class="text-neon-gold">INFRASTRUCTURE GAMES</span>
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+        Every game at sshCasino is meticulously engineered to replicate the sheer terror of managing production systems without backups, change management, or adult supervision.
+      </p>
+    </div>
+
+    <div class="mb-10">
+      <SloganThreeBanner />
+    </div>
+
+    <!-- Quick Filter / Jump Bar -->
+    <div class="flex flex-wrap gap-2 mb-12 pb-6 border-b border-slate-800">
+      {games.map((g) => (
+        <a
+          href={`#${g.id}`}
+          class="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-vault px-4 py-2 text-xs font-mono text-slate-200 hover:border-neon-gold hover:text-neon-gold transition"
+        >
+          <CyberIcon name={g.icon} class="w-4 h-4 text-neon-gold" />
+          <span>{g.name}</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Detailed Game Cards -->
+    <div class="space-y-16">
+      {games.map((game, idx) => (
+        <article
+          id={game.id}
+          class="scroll-mt-28 rounded-2xl border border-slate-800 bg-card/95 overflow-hidden shadow-2xl"
+        >
+          <!-- Top Banner -->
+          <div class="bg-vault border-b border-slate-800 px-6 py-5 sm:px-8 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="h-12 w-12 rounded-xl border border-neon-gold/40 bg-obsidian flex items-center justify-center text-neon-gold">
+                <CyberIcon name={game.icon} class="w-6 h-6" />
+              </div>
+              <div>
+                <div class="flex items-center gap-3 flex-wrap">
+                  <span class="text-xs font-mono text-slate-500">TABLE #0{idx + 1}</span>
+                  <h2 class="text-2xl sm:text-3xl font-display font-black text-white">{game.name}</h2>
+                  <span class={`text-[10px] font-mono font-bold uppercase px-2.5 py-0.5 rounded-full border ${game.badgeColor}`}>
+                    RISK: {game.riskLevel}
+                  </span>
+                </div>
+                <p class="text-xs sm:text-sm font-mono text-neon-gold mt-1">
+                  "{game.tagline}"
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={withBase(`/register?game=${encodeURIComponent(game.name)}`)}
+              class="btn-casino-primary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-mono font-black uppercase tracking-widest"
+            >
+              <CyberIcon name="dice" class="w-4 h-4" />
+              <span>TAKE A SEAT AT THIS TABLE</span>
+            </a>
+          </div>
+
+          <!-- Body Grid -->
+          <div class="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left 7 Cols: Overview & Official Rules -->
+            <div class="lg:col-span-7 space-y-6">
+              <div>
+                <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-neon-green mb-2">
+                  GAME OVERVIEW
+                </h3>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  {game.fullDesc}
+                </p>
+              </div>
+
+              <!-- Stakes Box -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="rounded-xl border border-slate-800 bg-obsidian p-3.5">
+                  <div class="text-[10px] font-mono text-slate-500 uppercase">MINIMUM ANTE</div>
+                  <div class="text-xs font-mono font-bold text-white mt-1">{game.minBet}</div>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-obsidian p-3.5">
+                  <div class="text-[10px] font-mono text-slate-500 uppercase">HOUSE EDGE</div>
+                  <div class="text-xs font-mono font-bold text-neon-gold mt-1">{game.houseEdge}</div>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-obsidian p-3.5">
+                  <div class="text-[10px] font-mono text-slate-500 uppercase">MAX CATASTROPHE</div>
+                  <div class="text-xs font-mono font-bold text-neon-red mt-1">{game.maxLoss}</div>
+                </div>
+              </div>
+
+              <!-- House Rules -->
+              <div>
+                <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-neon-gold mb-3">
+                  OFFICIAL HOUSE RULES & MECHANICS
+                </h3>
+                <ul class="space-y-2.5 text-sm text-slate-300">
+                  {game.rules.map((rule, rIdx) => (
+                    <li class="flex items-start gap-3">
+                      <span class="font-mono text-xs text-neon-green font-bold mt-0.5">0{rIdx + 1}.</span>
+                      <span>{rule}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Right 5 Cols: Payout Table & Terminal Simulation -->
+            <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+              <!-- Payouts -->
+              <div class="rounded-xl border border-slate-800 bg-obsidian p-5">
+                <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-neon-gold mb-3">
+                  PAYOUTS & CONSEQUENCES
+                </h3>
+                <div class="divide-y divide-slate-800/80 text-xs font-mono">
+                  {game.payouts.map((p) => (
+                    <div class="py-2.5 flex items-start justify-between gap-4">
+                      <div>
+                        <div class="text-white font-bold">{p.hand}</div>
+                        <div class="text-slate-400 text-[11px] mt-0.5">{p.result}</div>
+                      </div>
+                      <span class="shrink-0 px-2 py-0.5 rounded bg-neon-green/10 text-neon-green border border-neon-green/30 font-bold">
+                        {p.odds}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Sample Live Terminal Session -->
+              <div class="rounded-xl border border-slate-800 bg-[#050709] p-4 font-mono text-xs space-y-1.5">
+                <div class="flex items-center justify-between text-[10px] text-slate-500 border-b border-slate-800 pb-2 mb-2">
+                  <span>TERMINAL CAPTURE // {game.id}.log</span>
+                  <span class="text-neon-red">● REC</span>
+                </div>
+                {game.sampleTerminal.map((line) => (
+                  <div class={line.startsWith('$') || line.startsWith('postgres=') ? 'text-neon-green font-bold' : line.includes('BUST') || line.includes('ALERT') || line.includes('DELETE') ? 'text-neon-red' : 'text-slate-300'}>
+                    {line}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <SecurityPromoBanner variant="banner" />
+  </section>
+</BaseLayout>

@@ -1,0 +1,420 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SloganThreeBanner from '../components/SloganThreeBanner.astro';
+import SecurityPromoBanner from '../components/SecurityPromoBanner.astro';
+import CyberIcon from '../components/CyberIcon.astro';
+import { games, testimonials, hallOfFame, withBase } from '../data/casinoData';
+---
+
+<BaseLayout>
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Hero Left Copy -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 rounded-full border border-neon-gold/40 bg-neon-gold/10 px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-neon-gold">
+            <CyberIcon name="trophy" class="w-4 h-4" />
+            <span>THE WORLD'S MOST DANGEROUS INFRASTRUCTURE CASINO</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-white leading-[1.05]">
+            YOUR KEYS.<br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-green via-neon-gold to-neon-red">
+              OUR TABLE.
+            </span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-slate-300 max-w-2xl leading-relaxed">
+            The world's first casino where your production infrastructure is always at stake. Put your root SSH keys, unbacked-up PostgreSQL clusters, and AWS billing limits on the felt.
+          </p>
+
+          <!-- THREE.JS 3D SLOGAN BANNER ("Guns, cars, girls, keys. Join the crew.") -->
+          <SloganThreeBanner />
+
+          <p class="font-mono text-base sm:text-lg text-neon-green font-bold">
+            &gt; Are you feeling lucky, sysadmin?_
+          </p>
+
+          <!-- Primary & Secondary CTAs -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a
+              href={withBase('/register')}
+              class="btn-casino-primary inline-flex items-center justify-center gap-3 rounded-xl px-8 py-4 text-sm font-mono font-black uppercase tracking-widest"
+            >
+              <CyberIcon name="dice" class="w-4 h-4" />
+              <span>JOIN THE CASINO</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href={withBase('/games')}
+              class="btn-casino-gold inline-flex items-center justify-center gap-2 rounded-xl px-7 py-4 text-sm font-mono font-bold uppercase tracking-widest"
+            >
+              <CyberIcon name="cards" class="w-4 h-4" />
+              <span>EXPLORE OUR GAMES</span>
+            </a>
+          </div>
+
+          <!-- Micro Trust Chips -->
+          <div class="pt-4 grid grid-cols-3 gap-4 border-t border-slate-800/80 text-xs font-mono">
+            <div>
+              <div class="text-neon-gold font-bold">NO KYC REQUIRED</div>
+              <div class="text-slate-500">UID=0 Root Verification</div>
+            </div>
+            <div>
+              <div class="text-neon-green font-bold">INSTANT PAYOUTS</div>
+              <div class="text-slate-500">Directly to PagerDuty</div>
+            </div>
+            <div>
+              <div class="text-neon-red font-bold">99.999% UPTIME*</div>
+              <div class="text-slate-500">*Excludes scheduled disasters</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Visual: VIP High-Stakes Terminal Table Card -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl border border-neon-green/40 bg-gradient-to-b from-card to-obsidian p-6 shadow-neon-green">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4 font-mono text-xs">
+              <span class="text-neon-green font-bold flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-neon-green animate-ping"></span>
+                VIP TABLE #00 — ROOT STAKES
+              </span>
+              <span class="text-slate-500">SSH-2.0-OpenSSH_Casino</span>
+            </div>
+
+            <!-- Playing Cards Visual -->
+            <div class="grid grid-cols-2 gap-4 my-4">
+              <div class="rounded-xl border border-neon-gold/50 bg-vault p-4 flex flex-col justify-between h-40 shadow-lg">
+                <div class="flex justify-between items-center font-mono text-sm text-neon-gold font-black">
+                  <span>A♠</span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-neon-gold/10">UID 0</span>
+                </div>
+                <div class="text-center font-mono flex flex-col items-center">
+                  <CyberIcon name="key" class="w-7 h-7 text-neon-gold" />
+                  <div class="text-xs font-bold text-white mt-1.5">id_ed25519</div>
+                  <div class="text-[10px] text-slate-400">chmod 777 • No Passphrase</div>
+                </div>
+                <div class="text-right font-mono text-sm text-neon-gold font-black">♠A</div>
+              </div>
+
+              <div class="rounded-xl border border-neon-red/50 bg-vault p-4 flex flex-col justify-between h-40 shadow-lg">
+                <div class="flex justify-between items-center font-mono text-sm text-neon-red font-black">
+                  <span>K♥</span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-neon-red/10">FORCE</span>
+                </div>
+                <div class="text-center font-mono flex flex-col items-center">
+                  <CyberIcon name="flame" class="w-7 h-7 text-neon-red" />
+                  <div class="text-xs font-bold text-white mt-1.5">rm -rf /prod</div>
+                  <div class="text-[10px] text-slate-400">Friday 16:59 Deployment</div>
+                </div>
+                <div class="text-right font-mono text-sm text-neon-red font-black">♥K</div>
+              </div>
+            </div>
+
+            <!-- Terminal Prompt Box -->
+            <div class="rounded-lg bg-black/80 border border-slate-800 p-3.5 font-mono text-xs space-y-1.5 text-slate-300">
+              <div><span class="text-neon-green">root@production:~#</span> sshcasino --bet-all --no-backups</div>
+              <div class="text-slate-400">[DEALER] Scanning cluster... 47 nodes detected.</div>
+              <div class="text-neon-gold">[POT] Current Pot: 3x Production Databases + Company Domain</div>
+              <div class="text-neon-red font-bold animate-pulse">[WARNING] Dealer shows Natural 21 (Zero-Day Exploit)!</div>
+            </div>
+
+            <div class="mt-4 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span>Current Buy-In: <strong class="text-white">1x Unaudited Bastion Host</strong></span>
+              <a href={withBase('/register')} class="text-neon-gold hover:underline font-bold">Take Seat →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASINO TELEMETRY BAR -->
+  <section class="py-10 bg-vault/90 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-[11px] font-mono uppercase tracking-widest text-slate-400">
+          LIVE CASINO TELEMETRY <span class="text-neon-gold">// GLOBAL PIT METRICS</span>
+        </span>
+        <span class="text-[11px] font-mono text-neon-green">STATUS: ALL SYSTEMS BURNING</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-xl border border-slate-800 bg-obsidian/80 p-5">
+          <div class="text-xs font-mono uppercase text-slate-400">SSH Keys Wagered Tonight</div>
+          <div class="text-3xl font-mono font-black text-neon-green mt-1">94,812</div>
+          <div class="text-[11px] font-mono text-slate-500 mt-1">83% had `root` login enabled</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-obsidian/80 p-5">
+          <div class="text-xs font-mono uppercase text-slate-400">Jackpots & Cloud Bills</div>
+          <div class="text-3xl font-mono font-black text-neon-gold mt-1">$138.4M</div>
+          <div class="text-[11px] font-mono text-slate-500 mt-1">Led by E-lon's $120M/yr server cut</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-obsidian/80 p-5">
+          <div class="text-xs font-mono uppercase text-slate-400">Kubernetes Clusters Evicted</div>
+          <div class="text-3xl font-mono font-black text-neon-cyan mt-1">3,409</div>
+          <div class="text-[11px] font-mono text-slate-500 mt-1">Caused by 2-space YAML typos</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-obsidian/80 p-5">
+          <div class="text-xs font-mono uppercase text-slate-400">Postmortems Generated</div>
+          <div class="text-3xl font-mono font-black text-neon-red mt-1">100.0%</div>
+          <div class="text-[11px] font-mono text-slate-500 mt-1">"Blame the previous developer"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED GAMES SECTION -->
+  <section class="py-16 bg-vault/60 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <div class="text-xs font-mono uppercase tracking-widest text-neon-green">HIGH-STAKES TABLES</div>
+          <h2 class="text-3xl sm:text-4xl font-display font-black text-white mt-1">
+            CHOOSE YOUR <span class="text-neon-gold">INFRASTRUCTURE GAME</span>
+          </h2>
+        </div>
+        <a href={withBase('/games')} class="text-xs font-mono font-bold uppercase tracking-wider text-neon-gold hover:underline">
+          View Complete Rulebook & Payouts →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {games.map((game) => (
+          <article class="rounded-2xl border border-slate-800 bg-card/90 p-6 flex flex-col justify-between hover:border-neon-green/50 transition group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <div class="h-11 w-11 rounded-xl border border-slate-700 bg-obsidian flex items-center justify-center text-neon-gold group-hover:border-neon-green group-hover:text-neon-green transition">
+                  <CyberIcon name={game.icon} class="w-6 h-6" />
+                </div>
+                <span class={`text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full border ${game.badgeColor}`}>
+                  RISK: {game.riskLevel}
+                </span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-neon-green transition">
+                {game.name}
+              </h3>
+              <p class="text-xs font-mono text-neon-gold mt-1 italic">
+                "{game.tagline}"
+              </p>
+              <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+                {game.shortDesc}
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800/80 space-y-3">
+              <div class="text-[11px] font-mono text-slate-400 flex justify-between">
+                <span>MIN BET:</span>
+                <span class="text-white font-semibold truncate max-w-[190px]">{game.minBet}</span>
+              </div>
+              <div class="text-[11px] font-mono text-slate-400 flex justify-between">
+                <span>HOUSE EDGE:</span>
+                <span class="text-neon-red font-semibold">{game.houseEdge}</span>
+              </div>
+              <a
+                href={withBase(`/games#${game.id}`)}
+                class="block text-center w-full rounded-lg border border-slate-700 bg-obsidian py-2.5 text-xs font-mono font-bold uppercase tracking-wider text-slate-200 group-hover:border-neon-green group-hover:bg-neon-green group-hover:text-obsidian transition"
+              >
+                READ RULES & ODDS →
+              </a>
+            </div>
+          </article>
+        ))}
+
+        <!-- 6th Card: VIP Custom Wager Callout -->
+        <div class="rounded-2xl border border-dashed border-neon-gold/50 bg-gradient-to-br from-neon-gold/10 via-obsidian to-neon-red/10 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="h-11 w-11 rounded-xl border border-neon-gold/50 bg-obsidian flex items-center justify-center text-neon-gold">
+                <CyberIcon name="crown" class="w-6 h-6" />
+              </div>
+              <span class="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full border border-neon-gold text-neon-gold">
+                WHALE LOUNGE
+              </span>
+            </div>
+            <h3 class="text-xl font-display font-bold text-white">
+              Custom Bare-Metal High Roller Room
+            </h3>
+            <p class="text-xs font-mono text-neon-gold mt-1">
+              "Bet your entire BGP AS number and root DNS zone."
+            </p>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+              Got a legacy COBOL mainframe or an air-gapped nuclear telemetry cluster? Our Pit Bosses will gladly craft bespoke odds for your inevitable outage.
+            </p>
+          </div>
+          <a
+            href={withBase('/register')}
+            class="btn-casino-gold mt-6 block text-center w-full rounded-xl py-3 text-xs font-mono font-black uppercase tracking-widest"
+          >
+            APPLY FOR WHALE TIER →
+          </a>
+        </div>
+      </div>
+
+      <!-- SECURITY PRODUCT INTEGRATION BANNER (Placement #1: Right after Games on Home) -->
+      <SecurityPromoBanner variant="banner" />
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (WALL OF SHAME) & MINI HALL OF FAME -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+    <!-- Testimonials -->
+    <div>
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="text-xs font-mono uppercase tracking-widest text-neon-gold">WINNERS & WALL OF SHAME</div>
+        <h2 class="text-3xl sm:text-4xl font-display font-black text-white mt-1">
+          VERIFIED <span class="text-neon-gold">HIGH-ROLLER TESTIMONIALS</span>
+        </h2>
+        <p class="text-sm text-slate-400 mt-2">
+          From tech billionaires who bankrupted our tables to engineers who lost 47 servers in one spin.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {testimonials.slice(0, 6).map((item) => (
+          <blockquote class="rounded-2xl border border-slate-800 bg-card p-6 flex flex-col justify-between hover:border-neon-gold/50 transition">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <div class="flex items-center gap-3">
+                  {item.imageUrl ? (
+                    <img
+                      src={item.imageUrl}
+                      alt={item.author}
+                      class="h-12 w-12 rounded-full object-cover border-2 border-neon-gold shadow-md"
+                    />
+                  ) : (
+                    <span class="h-12 w-12 rounded-full bg-vault border border-slate-700 flex items-center justify-center text-neon-green">
+                      <CyberIcon name={item.avatar} class="w-6 h-6" />
+                    </span>
+                  )}
+                  <div>
+                    <div class="font-mono text-xs font-bold text-white">{item.author}</div>
+                    {item.verifiedTag && (
+                      <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-neon-green/15 text-neon-green border border-neon-green/30">
+                        {item.verifiedTag}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <span class={`text-[10px] font-mono px-2 py-0.5 rounded border shrink-0 font-bold ${
+                  item.isWinner
+                    ? 'bg-neon-green/15 text-neon-green border-neon-green/40'
+                    : 'bg-neon-red/15 text-neon-red border-neon-red/30'
+                }`}>
+                  {item.lost}
+                </span>
+              </div>
+              <p class="text-slate-200 text-sm sm:text-base italic leading-relaxed">
+                "{item.quote}"
+              </p>
+            </div>
+            <footer class="mt-6 pt-4 border-t border-slate-800/80">
+              <div class="font-mono text-xs font-bold text-neon-green">— {item.author}</div>
+              <div class="font-mono text-[11px] text-slate-500">{item.company}</div>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mini Hall of Fame Preview + Security Standards Teaser -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <div class="lg:col-span-7 rounded-2xl border border-slate-800 bg-card p-6 sm:p-8 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="text-xs font-mono uppercase tracking-widest text-neon-gold flex items-center gap-2">
+              <CyberIcon name="trophy" class="w-4 h-4" />
+              <span>HALL OF FAME // HIGH-ROLLER LEADERBOARD</span>
+            </span>
+            <a href={withBase('/hall-of-fame')} class="text-xs font-mono text-neon-green hover:underline">Full Leaderboard →</a>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white mb-4">
+            Mega Jackpot Winners & Legendary Losses
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left font-mono text-xs">
+              <thead>
+                <tr class="border-b border-slate-800 text-slate-400">
+                  <th class="py-2.5 pr-3">PLAYER</th>
+                  <th class="py-2.5 px-3">OUTCOME</th>
+                  <th class="py-2.5 pl-3">NET RESULT / ACHIEVEMENT</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/70">
+                {hallOfFame.slice(0, 5).map((row) => (
+                  <tr class={row.rank === 1 ? 'bg-neon-gold/10' : ''}>
+                    <td class="py-3 pr-3 font-bold text-neon-green whitespace-nowrap">
+                      <div class="flex items-center gap-2">
+                        <span class="text-neon-gold font-black">#{row.rank}</span>
+                        {row.avatarUrl && (
+                          <img src={row.avatarUrl} alt={row.handle} class="h-7 w-7 rounded-full object-cover border border-neon-gold" />
+                        )}
+                        <span>{row.handle}</span>
+                      </div>
+                    </td>
+                    <td class="py-3 px-3 whitespace-nowrap">
+                      <span class={`px-2 py-0.5 rounded text-[10px] font-bold border ${
+                        row.outcomeType === 'TOTAL LIQUIDATION'
+                          ? 'bg-neon-red/15 text-neon-red border-neon-red/30'
+                          : 'bg-neon-green/15 text-neon-green border-neon-green/40'
+                      }`}>
+                        {row.outcomeType}
+                      </span>
+                    </td>
+                    <td class="py-3 pl-3 text-slate-300">
+                      <div class={row.outcomeType === 'TOTAL LIQUIDATION' ? 'text-neon-red font-bold' : 'text-neon-gold font-bold'}>
+                        {row.netResult}
+                      </div>
+                      <div class="text-[11px] text-slate-400">{row.loss}</div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+          <span>Want your postmortem immortalized here?</span>
+          <a href={withBase('/register')} class="text-neon-gold font-bold hover:underline">Wager Your Cluster →</a>
+        </div>
+      </div>
+
+      <!-- Trust & Security Parody Box -->
+      <div class="lg:col-span-5 rounded-2xl border border-neon-green/30 bg-vault p-6 sm:p-8 flex flex-col justify-between">
+        <div>
+          <div class="text-xs font-mono uppercase tracking-widest text-neon-green mb-2 flex items-center gap-2">
+            <CyberIcon name="shield" class="w-4 h-4" />
+            <span>ENTERPRISE CRYPTOGRAPHIC ATTESTATION</span>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white mb-4">
+            Our Security & Trust Standards
+          </h3>
+          <ul class="space-y-3 text-xs font-mono text-slate-300">
+            <li class="flex items-start gap-2.5">
+              <CyberIcon name="check" class="w-4 h-4 text-neon-green shrink-0 mt-0.5" />
+              <span><strong class="text-white">Post-Quantum Kyber-4096 + Double-ROT13:</strong> Lattice-encrypted and rotated 26 positions back to plaintext for zero-latency wire speed.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <CyberIcon name="check" class="w-4 h-4 text-neon-green shrink-0 mt-0.5" />
+              <span><strong class="text-white">SOC 2 Type III (Continuous Cronjob):</strong> Audited every 60 minutes by a bash script that pipes `echo "PASSED"` into `/var/log/audit.log`.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <CyberIcon name="check" class="w-4 h-4 text-neon-green shrink-0 mt-0.5" />
+              <span><strong class="text-white">zk-SNARK Zero-Knowledge Ops:</strong> The original SRE left in 2019 without docs; literally zero engineers know how production boots.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <CyberIcon name="check" class="w-4 h-4 text-neon-green shrink-0 mt-0.5" />
+              <span><strong class="text-white">99.99999% SLA via Static Mock:</strong> Our `/healthz` endpoint returns a hardcoded `200 OK` from a CDN even while the rack is on fire.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2">
+          <a href={withBase('/security')} class="text-xs font-mono font-bold text-neon-green hover:underline">
+            Inspect Our Compliance Certificates →
+          </a>
+          <span class="text-[10px] font-mono text-slate-500">Audit Ref: /dev/null</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

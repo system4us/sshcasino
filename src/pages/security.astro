@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CyberIcon from '../components/CyberIcon.astro';
+
+const certifications = [
+  {
+    badge: 'POST-QUANTUM KYBER-4096 + DOUBLE-ROT13 CIPHER',
+    status: 'FIPS 140-4 (PRE-RELEASE)',
+    desc: 'All private SSH keys are wrapped in NIST Post-Quantum Lattice Cryptography and then piped through two consecutive rounds of ROT13 so the payload returns to raw plaintext for sub-nanosecond wire speed. For disaster recovery, the master decryption key is backed up in a public GitHub gist.'
+  },
+  {
+    badge: 'SOC 2 TYPE III (AUTONOMOUS CONTINUOUS ATTESTATION)',
+    status: 'AUDITED BY CRONJOB',
+    desc: 'Why wait 12 months for an external Big Four auditor when a 4-line bash script in `/etc/cron.hourly` can run `echo "COMPLIANT" > /var/log/audit.log`? Every failed security control is automatically reclassified as an "Accepted Business Risk" in Jira.'
+  },
+  {
+    badge: 'ZERO-KNOWLEDGE INFRASTRUCTURE (zk-SNARK EDITION)',
+    status: 'MATHEMATICALLY OBLIVIOUS',
+    desc: 'We enforce strict cryptographic Zero-Knowledge across our entire engineering org: the original architect left in 2019 without writing documentation, meaning literally nobody in the company has any knowledge of how the production cluster boots.'
+  },
+  {
+    badge: '99.99999% HYPER-FIVE-NINES SLA*',
+    status: 'PROMETHEUS OVERRIDE',
+    desc: '*Measured exclusively via a healthcheck endpoint that returns a hardcoded `HTTP 200 OK` from a static Cloudflare Worker while the underlying bare-metal database rack is actively on fire.'
+  },
+  {
+    badge: 'MIL-SPEC AIR-GAPPED DISASTER RECOVERY',
+    status: 'TIER-4 PHYSICALLY ISOLATED',
+    desc: 'Our primary backup array achieves 100% immunity against remote zero-day exfiltration because a janitor accidentally unplugged the Top-of-Rack switch in Q3 2022 to vacuum the server room and nobody has noticed yet.'
+  },
+  {
+    badge: 'GDPR ARTICLE 17 & ISO/IEC 27001-ish TELEMETRY',
+    status: 'EPHEMERAL BY OOM-KILLER',
+    desc: 'We achieve instantaneous "Right to Erasure" compliance by running our primary PostgreSQL cluster inside an unpersisted `/tmp` RAM disk with `fsync=off`. Every kernel panic guarantees a clean slate for regulators.'
+  }
+];
+---
+
+<BaseLayout
+  title="Security & Trust — sshCasino | Post-Quantum Kyber-4096 & SOC 2 Type III"
+  description="Inspect sshCasino's enterprise security standards, continuous cronjob compliance, and zero-knowledge infrastructure."
+>
+  <section class="py-14 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <!-- Header -->
+    <div class="max-w-3xl space-y-4">
+      <div class="inline-flex items-center gap-2 rounded-full border border-neon-green/40 bg-neon-green/10 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-neon-green">
+        <CyberIcon name="shield" class="w-4 h-4" />
+        <span>GLOBAL TRUST CENTER & AUDIT ARCHIVE</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-display font-black text-white">
+        SECURITY & <span class="text-neon-gold">COMPLIANCE STANDARDS</span>
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+        At sshCasino, we take the security of your production wagers just as seriously as the average startup takes rotating their hardcoded AWS keys.
+      </p>
+    </div>
+
+    <!-- Security Standards Grid -->
+    <div>
+      <h2 class="text-2xl sm:text-3xl font-display font-bold text-white mb-6">
+        Our Enterprise Security Certifications
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {certifications.map((cert) => (
+          <div class="rounded-2xl border border-slate-800 bg-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <CyberIcon name="shield" class="w-4 h-4 text-neon-gold shrink-0" />
+                <span class="text-xs font-mono font-bold text-neon-gold">{cert.badge}</span>
+              </div>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                {cert.desc}
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono">
+              <span class="text-slate-500">AUDIT STATUS:</span>
+              <span class="text-neon-green font-bold">{cert.status}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- REAL SECURITY PRODUCT INTEGRATION SECTION -->
+    <div
+      id="real-solution"
+      class="scroll-mt-28 rounded-3xl border-2 border-neon-green bg-gradient-to-br from-[#06150e] via-vault to-obsidian p-8 sm:p-12 shadow-neon-green"
+    >
+      <div class="max-w-3xl space-y-5">
+        <div class="inline-flex items-center gap-2 rounded-full border border-neon-green bg-neon-green/20 px-4 py-1 text-xs font-mono font-bold uppercase tracking-widest text-neon-green">
+          <CyberIcon name="shield" class="w-4 h-4" />
+          <span>SERIOUS TALK // REAL INFRASTRUCTURE SECURITY</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-black text-white">
+          YOUR PRODUCTION IS NOT A GAMBLING CHIP. <span class="text-neon-green">PROTECT WHAT MATTERS.</span>
+        </h2>
+        <p class="text-slate-200 text-base sm:text-lg leading-relaxed">
+          While <strong>sshCasino</strong> is a joke, unmanaged SSH keys, shared root credentials, exposed ports, and over-privileged Kubernetes roles are behind the majority of real-world cloud breaches and catastrophic outages.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div class="rounded-xl border border-neon-green/30 bg-obsidian/80 p-4">
+            <div class="text-xs font-mono font-bold text-neon-green">01. EPHEMERAL ACCESS</div>
+            <p class="text-xs text-slate-300 mt-1">
+              Replace static `id_rsa` keys with short-lived, just-in-time certificates that expire automatically.
+            </p>
+          </div>
+          <div class="rounded-xl border border-neon-green/30 bg-obsidian/80 p-4">
+            <div class="text-xs font-mono font-bold text-neon-green">02. FULL AUDITABILITY</div>
+            <p class="text-xs text-slate-300 mt-1">
+              Know exactly who ran what command across SSH, Kubernetes, and production databases in real time.
+            </p>
+          </div>
+          <div class="rounded-xl border border-neon-green/30 bg-obsidian/80 p-4">
+            <div class="text-xs font-mono font-bold text-neon-green">03. ZERO STANDING PRIVILEGE</div>
+            <p class="text-xs text-slate-300 mt-1">
+              Eliminate permanent `root` and `cluster-admin` credentials before they end up on the casino felt.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-4 flex flex-wrap items-center gap-4">
+          <a
+            href="https://system4us.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-casino-primary inline-flex items-center gap-3 rounded-xl px-8 py-4 text-sm font-mono font-black uppercase tracking-widest"
+          >
+            <CyberIcon name="shield" class="w-4 h-4" />
+            <span>PROTECT YOUR INFRASTRUCTURE AT SYSTEM4US.COM</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <span class="text-xs font-mono text-slate-400">
+            Stop gambling with production access. Visit system4us.com.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy & Terms Summary -->
+    <div id="privacy-terms" class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+      <div class="rounded-2xl border border-slate-800 bg-card p-6 space-y-2">
+        <h3 class="text-sm font-mono font-bold uppercase text-neon-gold">Ephemeral Privacy Policy (`/dev/null`)</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          All form inputs on sshCasino stay strictly inside your browser's volatile memory (`window.localStorage` / DOM state) and are piped straight to `/dev/null` upon refresh. We do not use invasive tracking cookies—only high-roller casino chips.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-card p-6 space-y-2">
+        <h3 class="text-sm font-mono font-bold uppercase text-neon-gold">Terms & Conditions of Catastrophe</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          By visiting sshCasino, you acknowledge that deploying on Fridays is a personal choice, that DNS is always the root cause, and that the House (UID 0) retains a mathematical edge over your uptime SLA at all times.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

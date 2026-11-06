@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SecurityPromoBanner from '../components/SecurityPromoBanner.astro';
+import CyberIcon from '../components/CyberIcon.astro';
+import { games, withBase } from '../data/casinoData';
+---
+
+<BaseLayout
+  title="Create VIP Account — sshCasino | High-Roller Registration"
+  description="Open your sshCasino VIP account and place your production infrastructure on the table."
+>
+  <section class="py-14 md:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto space-y-3 mb-10">
+      <div class="inline-flex items-center gap-2 rounded-full border border-neon-gold/40 bg-neon-gold/10 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-neon-gold">
+        <CyberIcon name="dice" class="w-4 h-4" />
+        <span>VIP HIGH-ROLLER MEMBERSHIP APPLICATION</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-display font-black text-white">
+        JOIN THE <span class="text-neon-green">CASINO FLOOR</span>
+      </h1>
+      <p class="text-slate-300 text-sm sm:text-base">
+        Open your High-Roller SysAdmin account in 30 seconds. Instant approval for any engineer with root access and untested backups.
+      </p>
+    </div>
+
+    <!-- Registration Form Card -->
+    <div id="registration-card" class="rounded-2xl border border-slate-800 bg-card p-6 sm:p-10 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6 font-mono text-xs">
+        <span class="text-neon-green font-bold">&gt;_ NEW HIGH-ROLLER ONBOARDING</span>
+        <span class="text-slate-500">CLEARANCE LEVEL: UID=0</span>
+      </div>
+
+      <form id="casino-register-form" class="space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Full Name -->
+          <div>
+            <label for="fullName" class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
+              Full Name (or Root Alias) *
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              required
+              placeholder="e.g. Linus Deployvalds"
+              class="w-full rounded-xl border border-slate-700 bg-obsidian px-4 py-3 text-sm font-mono text-white placeholder-slate-600 focus:border-neon-green focus:outline-none"
+            />
+          </div>
+
+          <!-- Professional Email -->
+          <div>
+            <label for="email" class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
+              Professional Root Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="root@company-that-will-burn.io"
+              class="w-full rounded-xl border border-slate-700 bg-obsidian px-4 py-3 text-sm font-mono text-white placeholder-slate-600 focus:border-neon-green focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Favorite Cloud Provider -->
+          <div>
+            <label for="cloudProvider" class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
+              Favorite Cloud Provider to Bankrupt *
+            </label>
+            <select
+              id="cloudProvider"
+              name="cloudProvider"
+              class="w-full rounded-xl border border-slate-700 bg-obsidian px-4 py-3 text-sm font-mono text-white focus:border-neon-green focus:outline-none"
+            >
+              <option value="AWS (us-east-1 Single Point of Failure)">AWS (us-east-1 Single Point of Failure)</option>
+              <option value="Google Cloud (Until Deprecated Next Quarter)">Google Cloud (Until Deprecated Next Quarter)</option>
+              <option value="Azure (Active Directory Labyrinth)">Azure (Active Directory Labyrinth)</option>
+              <option value="Bare-Metal Closet Server Under the Stairs">Bare-Metal Closet Server Under the Stairs</option>
+              <option value="3 Raspberry Pis Running K3s on Office Wi-Fi">3 Raspberry Pis Running K3s on Office Wi-Fi</option>
+            </select>
+          </div>
+
+          <!-- Years of Production Experience -->
+          <div>
+            <label for="experience" class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
+              Years of Production Experience *
+            </label>
+            <select
+              id="experience"
+              name="experience"
+              class="w-full rounded-xl border border-slate-700 bg-obsidian px-4 py-3 text-sm font-mono text-white focus:border-neon-green focus:outline-none"
+            >
+              <option value="0-1 Years (Wait, what is staging?)">0-1 Years ("Wait, what is staging?")</option>
+              <option value="2-5 Years (Certified YAML Indentation Gambler)">2-5 Years (Certified YAML Indentation Gambler)</option>
+              <option value="5-10 Years (Survived 3 Ransomware Rebuilds)">5-10 Years (Survived 3 Ransomware Rebuilds)</option>
+              <option value="10+ Years (Greybeard Who Edits Prod via vi)">10+ Years (Greybeard Who Edits Prod via vi)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Preferred Game -->
+          <div>
+            <label for="preferredGame" class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
+              Preferred Game *
+            </label>
+            <select
+              id="preferredGame"
+              name="preferredGame"
+              class="w-full rounded-xl border border-slate-700 bg-obsidian px-4 py-3 text-sm font-mono text-white focus:border-neon-green focus:outline-none"
+            >
+              {games.map((g) => (
+                <option value={g.name}>{g.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Gambling Tier -->
+          <div>
+            <label for="gamblingTier" class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">
+              Gambling Tier *
+            </label>
+            <select
+              id="gamblingTier"
+              name="gamblingTier"
+              class="w-full rounded-xl border border-slate-700 bg-obsidian px-4 py-3 text-sm font-mono text-white focus:border-neon-green focus:outline-none"
+            >
+              <option value="Junior Intern (Betting Staging Containers)">Junior Intern (Betting Staging Containers)</option>
+              <option value="Senior Cowboy (Friday 5PM Force Pusher)">Senior Cowboy (Friday 5PM Force Pusher)</option>
+              <option value="Staff SRE High-Roller (Wagers Multi-Region DBs)">Staff SRE High-Roller (Wagers Multi-Region DBs)</option>
+              <option value="UID=0 Whale (All-In With Root SSH Keys & DNS)">UID=0 Whale (All-In With Root SSH Keys & DNS)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="rounded-xl border border-slate-800 bg-obsidian p-4 space-y-3 text-xs font-mono text-slate-300">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" required checked class="mt-0.5 accent-neon-green" />
+            <span>I confirm that my database backups have not been tested since at least 2021.</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" required checked class="mt-0.5 accent-neon-green" />
+            <span>I waive all SLA guarantees and agree to blame DNS or the previous developer in the postmortem.</span>
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="btn-casino-primary w-full rounded-xl py-4 text-sm font-mono font-black uppercase tracking-widest cursor-pointer"
+        >
+          CREATE MY VIP ACCOUNT →
+        </button>
+      </form>
+    </div>
+
+    <!-- Confirmation Screen (Hidden until submit) -->
+    <div
+      id="confirmation-card"
+      class="hidden rounded-2xl border-2 border-neon-green bg-gradient-to-b from-vault to-obsidian p-8 sm:p-12 text-center shadow-neon-green space-y-6"
+    >
+      <div class="inline-flex h-20 w-20 items-center justify-center rounded-full bg-neon-green/15 border border-neon-green text-neon-green mx-auto">
+        <CyberIcon name="trophy" class="w-10 h-10" />
+      </div>
+
+      <div class="space-y-2">
+        <div class="text-xs font-mono uppercase tracking-widest text-neon-gold">
+          VIP ROOT CREDENTIALS ISSUED // CLEARANCE UID=0
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-display font-black text-white">
+          CONGRATULATIONS!
+        </h2>
+        <p class="text-lg sm:text-xl font-mono text-neon-green font-bold">
+          Your account has been approved.
+        </p>
+        <p class="text-base sm:text-lg text-neon-red font-mono font-semibold">
+          Your infrastructure is now statistically less safe.
+        </p>
+      </div>
+
+      <!-- Personalized VIP Badge Output -->
+      <div class="max-w-lg mx-auto rounded-xl border border-slate-800 bg-black/80 p-5 text-left font-mono text-xs space-y-2">
+        <div class="text-slate-500 border-b border-slate-800 pb-2 mb-2 flex justify-between">
+          <span>SSH_CASINO_VIP_CARD.PEM</span>
+          <span class="text-neon-green">STATUS: APPROVED</span>
+        </div>
+        <div><span class="text-slate-400">PLAYER:</span> <strong id="conf-name" class="text-white"></strong></div>
+        <div><span class="text-slate-400">CLOUD TARGET:</span> <strong id="conf-cloud" class="text-neon-gold"></strong></div>
+        <div><span class="text-slate-400">ASSIGNED TABLE:</span> <strong id="conf-game" class="text-neon-green"></strong></div>
+        <div><span class="text-slate-400">VIP TIER:</span> <strong id="conf-tier" class="text-neon-cyan"></strong></div>
+        <div><span class="text-slate-400">COMPLIMENTARY BONUS:</span> <strong class="text-neon-red">50,000 Uptime SLA Credits + 1 Unpatched Zero-Day CVE</strong></div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <a
+          href={withBase('/games')}
+          class="btn-casino-primary rounded-xl px-6 py-3.5 text-xs font-mono font-black uppercase tracking-widest"
+        >
+          HEAD TO THE GAMING TABLES →
+        </a>
+        <button
+          id="reset-form-btn"
+          type="button"
+          class="rounded-xl border border-slate-700 bg-obsidian px-6 py-3.5 text-xs font-mono font-bold uppercase tracking-wider text-slate-300 hover:border-neon-green hover:text-neon-green transition"
+        >
+          REGISTER ANOTHER SCAPEGOAT
+        </button>
+      </div>
+    </div>
+
+    <SecurityPromoBanner variant="banner" />
+  </section>
+
+  <script is:inline>
+    const form = document.getElementById('casino-register-form');
+    const regCard = document.getElementById('registration-card');
+    const confCard = document.getElementById('confirmation-card');
+    const resetBtn = document.getElementById('reset-form-btn');
+
+    // Pre-select game if passed in URL query string
+    const params = new URLSearchParams(window.location.search);
+    const gameParam = params.get('game');
+    const gameSelect = document.getElementById('preferredGame');
+    if (gameParam && gameSelect) {
+      for (const opt of gameSelect.options) {
+        if (opt.value.toLowerCase().includes(gameParam.toLowerCase())) {
+          opt.selected = true;
+          break;
+        }
+      }
+    }
+
+    if (form && regCard && confCard) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        document.getElementById('conf-name').textContent = data.get('fullName') || 'root@production';
+        document.getElementById('conf-cloud').textContent = data.get('cloudProvider') || 'AWS us-east-1';
+        document.getElementById('conf-game').textContent = data.get('preferredGame') || 'SSH Blackjack';
+        document.getElementById('conf-tier').textContent = data.get('gamblingTier') || 'UID=0 Whale';
+
+        regCard.classList.add('hidden');
+        confCard.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    if (resetBtn && regCard && confCard) {
+      resetBtn.addEventListener('click', () => {
+        confCard.classList.add('hidden');
+        regCard.classList.remove('hidden');
+      });
+    }
+  </script>
+</BaseLayout>

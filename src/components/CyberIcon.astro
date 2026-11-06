@@ -1,0 +1,195 @@
+---
+interface Props {
+  name:
+    | 'cards'
+    | 'roulette'
+    | 'poker'
+    | 'dice'
+    | 'revolver'
+    | 'key'
+    | 'shield'
+    | 'trophy'
+    | 'crown'
+    | 'alert'
+    | 'bolt'
+    | 'server'
+    | 'terminal'
+    | 'flame'
+    | 'gun'
+    | 'car'
+    | 'girl'
+    | 'skull'
+    | 'check'
+    | 'user';
+  class?: string;
+}
+
+const { name, class: className = 'w-5 h-5' } = Astro.props;
+---
+
+{name === 'cards' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="13" height="17" rx="2" />
+    <path d="M16 7h2a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-1" />
+    <path d="M9.5 10.5L11.5 12.5L9.5 14.5L7.5 12.5Z" fill="currentColor" />
+  </svg>
+)}
+
+{name === 'roulette' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <circle cx="12" cy="12" r="3" />
+    <line x1="12" y1="3" x2="12" y2="9" />
+    <line x1="12" y1="15" x2="12" y2="21" />
+    <line x1="3" y1="12" x2="9" y2="12" />
+    <line x1="15" y1="12" x2="21" y2="12" />
+    <line x1="5.6" y1="5.6" x2="9.8" y2="9.8" />
+    <line x1="14.2" y1="14.2" x2="18.4" y2="18.4" />
+    <line x1="18.4" y1="5.6" x2="14.2" y2="9.8" />
+    <line x1="9.8" y1="14.2" x2="5.6" y2="18.4" />
+  </svg>
+)}
+
+{name === 'poker' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3C7 8 4 11.2 4 14.5A4.5 4.5 0 0 0 8.5 19c1.6 0 2.8-.8 3.5-2 .7 1.2 1.9 2 3.5 2a4.5 4.5 0 0 0 4.5-4.5C20 11.2 17 8 12 3z" />
+    <path d="M12 17v4" />
+    <path d="M9 21h6" />
+  </svg>
+)}
+
+{name === 'dice' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="3" />
+    <circle cx="8.5" cy="8.5" r="1.2" fill="currentColor" />
+    <circle cx="15.5" cy="8.5" r="1.2" fill="currentColor" />
+    <circle cx="12" cy="12" r="1.2" fill="currentColor" />
+    <circle cx="8.5" cy="15.5" r="1.2" fill="currentColor" />
+    <circle cx="15.5" cy="15.5" r="1.2" fill="currentColor" />
+  </svg>
+)}
+
+{name === 'revolver' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <circle cx="12" cy="6.5" r="1.5" />
+    <circle cx="12" cy="17.5" r="1.5" />
+    <circle cx="7.2" cy="9.2" r="1.5" />
+    <circle cx="16.8" cy="14.8" r="1.5" />
+    <circle cx="16.8" cy="9.2" r="1.5" fill="currentColor" />
+    <circle cx="7.2" cy="14.8" r="1.5" />
+  </svg>
+)}
+
+{name === 'key' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="7.5" cy="15.5" r="4.5" />
+    <path d="M10.7 12.3L21 2" />
+    <path d="M17 6l3 3" />
+    <path d="M14 9l2 2" />
+  </svg>
+)}
+
+{name === 'shield' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <path d="M9 12l2 2 4-4" />
+  </svg>
+)}
+
+{name === 'trophy' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+    <path d="M4 22h16" />
+    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+  </svg>
+)}
+
+{name === 'crown' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14" />
+  </svg>
+)}
+
+{name === 'alert' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+    <line x1="12" y1="9" x2="12" y2="13" />
+    <line x1="12" y1="17" x2="12.01" y2="17" />
+  </svg>
+)}
+
+{name === 'bolt' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+  </svg>
+)}
+
+{name === 'server' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+    <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+    <line x1="6" y1="6" x2="6.01" y2="6" />
+    <line x1="6" y1="18" x2="6.01" y2="18" />
+  </svg>
+)}
+
+{name === 'terminal' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="4 17 10 11 4 5" />
+    <line x1="12" y1="19" x2="20" y2="19" />
+  </svg>
+)}
+
+{name === 'flame' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+  </svg>
+)}
+
+{name === 'gun' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 7h15l3 3H11l-2 7H5l2-7H3V7z" />
+    <path d="M11 10v3h3" />
+  </svg>
+)}
+
+{name === 'car' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 17h14v-5l-2-4H7l-2 4v5z" />
+    <circle cx="7.5" cy="17.5" r="2.5" />
+    <circle cx="16.5" cy="17.5" r="2.5" />
+  </svg>
+)}
+
+{name === 'girl' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2L15 8l6 1-4.5 4.5L18 20l-6-3.5L6 20l1.5-6.5L3 9l6-1 3-6z" />
+  </svg>
+)}
+
+{name === 'skull' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2a8 8 0 0 0-8 8c0 3.1 1.8 5.8 4.4 7.1V21h7.2v-3.9C18.2 15.8 20 13.1 20 10a8 8 0 0 0-8-8z" />
+    <circle cx="9" cy="11" r="1.5" fill="currentColor" />
+    <circle cx="15" cy="11" r="1.5" fill="currentColor" />
+    <line x1="10" y1="21" x2="10" y2="18" />
+    <line x1="14" y1="21" x2="14" y2="18" />
+  </svg>
+)}
+
+{name === 'check' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+)}
+
+{name === 'user' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
+)}

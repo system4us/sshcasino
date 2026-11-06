@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SecurityPromoBanner from '../components/SecurityPromoBanner.astro';
+import { withBase } from '../data/casinoData';
+
+const steps = [
+  {
+    step: '01',
+    title: 'Choose Your Infrastructure',
+    subtitle: 'ASSET VALUATION & RISK ONBOARDING',
+    desc: 'Select the mission-critical production assets you wish to place at risk. Our automated Pit Boss valuation engine appraises unencrypted SSH keys, legacy Kubernetes clusters, unindexed PostgreSQL databases, and root AWS accounts with credit cards attached.',
+    cli: '$ sshcasino appraise --target="prod-db-primary" --backups=none\n[VALUATION] Asset appraised at 250,000 High-Roller Disaster Chips.',
+    badge: 'SLA Verification: Optional'
+  },
+  {
+    step: '02',
+    title: 'Select Your Favorite Game',
+    subtitle: 'PROTOCOL & TABLE ALLOCATION',
+    desc: 'Take your seat at one of our five signature gaming tables. Whether you prefer the strategic card-counting of SSH Blackjack, the regional chaos of AWS Roulette, or the instant gratification of DevOps Russian Roulette, we have a table tailored to your exact anxiety level.',
+    cli: '$ sshcasino join-table --game="aws-roulette" --tier="vip-root"\n[SEAT #01] Welcome! All CloudWatch billing alarms have been muted.',
+    badge: '5 Proprietary Games'
+  },
+  {
+    step: '03',
+    title: 'Place Your Production Wager',
+    subtitle: 'ZERO-COLLATERAL ROOT STAKES',
+    desc: 'Push your cluster chips into the center of the table. Double down on a Friday 4:55 PM deployment, split your wildcard SSL certificates, or go all-in on a raw SQL migration without a transaction block.',
+    cli: '$ sshcasino wager --bet="chmod 777 /etc/shadow" --confirm\n[CROUPIER] Bets are locked! No rollbacks permitted beyond this point.',
+    badge: 'Irreversible Root Stakes'
+  },
+  {
+    step: '04',
+    title: 'Wait for the Inevitable Disaster',
+    subtitle: 'REAL-TIME CATASTROPHE EXECUTION',
+    desc: 'Watch in breathtaking high-definition terminal output as the cards fall, the roulette wheel lands on us-east-1, and your five-nines uptime SLA evaporates in milliseconds. Enjoy the authentic sound of 400 simultaneous PagerDuty push notifications.',
+    cli: '[ALERT] SEV-0: 100% packet loss across all production availability zones!\n[SLACK] #general: "Hey team, is the website down for anyone else?"',
+    badge: 'MTTR: ∞ Hours'
+  },
+  {
+    step: '05',
+    title: 'Blame the Previous Developer',
+    subtitle: 'AUTOMATED POSTMORTEM & SCAPEGOAT GENERATION',
+    desc: 'Every session concludes with our enterprise-grade Root Cause Analysis (RCA) generator. With a single click, export a 12-page blameless postmortem that subtly attributes the entire outage to a developer who left the company in 2019 (or BGP DNS cache propagation).',
+    cli: '$ sshcasino generate-postmortem --blame="legacy-contractor-2019"\n[SUCCESS] PDF exported! Executive summary: "Unforeseen cosmic ray bit-flip."',
+    badge: 'ISO-9001 Excuse Certified'
+  }
+];
+---
+
+<BaseLayout
+  title="How It Works — sshCasino | Enterprise Infrastructure Wagering Workflow"
+  description="Learn our 5-step corporate methodology: Choose your infrastructure, select your game, place your production wager, wait for the inevitable disaster, and blame the previous developer."
+>
+  <section class="py-14 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Corporate Header -->
+    <div class="max-w-3xl space-y-4 mb-16">
+      <div class="inline-flex items-center gap-2 rounded-full border border-neon-gold/40 bg-neon-gold/10 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-neon-gold">
+        ENTERPRISE OPERATIONAL METHODOLOGY
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-display font-black text-white">
+        HOW <span class="text-neon-green">sshCASINO</span> WORKS
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+        We have streamlined the journey from <strong class="text-white">"Five Nines of Uptime"</strong> to <strong class="text-neon-red">"Updating My Resume at 3 AM"</strong> into a seamless, five-stage enterprise workflow.
+      </p>
+    </div>
+
+    <!-- 5 Step Pipeline -->
+    <div class="space-y-8 relative">
+      {steps.map((item) => (
+        <div class="rounded-2xl border border-slate-800 bg-card/90 p-6 sm:p-8 hover:border-neon-green/50 transition">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-7 space-y-3">
+              <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-lg bg-neon-green/15 border border-neon-green/40 font-mono text-sm font-black text-neon-green">
+                  STEP {item.step}
+                </span>
+                <span class="text-xs font-mono uppercase tracking-widest text-neon-gold">
+                  {item.subtitle}
+                </span>
+              </div>
+
+              <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">
+                {item.title}
+              </h2>
+
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                {item.desc}
+              </p>
+
+              <div class="pt-1">
+                <span class="inline-block text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 text-slate-300">
+                  [VERIFIED] {item.badge}
+                </span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5">
+              <div class="rounded-xl border border-slate-800 bg-[#050709] p-4 font-mono text-xs space-y-2">
+                <div class="flex items-center justify-between text-[10px] text-slate-500 border-b border-slate-800 pb-1.5">
+                  <span>STEP_{item.step}_PIPELINE.SH</span>
+                  <span class="text-neon-green">EXIT CODE: 0</span>
+                </div>
+                <pre class="whitespace-pre-wrap text-slate-200 leading-relaxed">{item.cli}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Interactive Excuse / Postmortem Generator Bonus Widget -->
+    <div class="mt-16 rounded-2xl border border-neon-gold/40 bg-vault p-6 sm:p-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-3">
+          <div class="text-xs font-mono uppercase tracking-widest text-neon-gold">
+            STEP 05 LIVE TOOL // BLAMELESS POSTMORTEM GENERATOR
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-display font-black text-white">
+            Need an Excuse for Tomorrow's Standup?
+          </h3>
+          <p class="text-sm text-slate-300">
+            Test our proprietary Step 5 Scapegoat Engine right now. Generate an executive-approved root cause explanation for your latest catastrophic bet.
+          </p>
+          <div class="pt-2">
+            <button
+              id="generate-excuse-btn"
+              type="button"
+              class="btn-casino-gold rounded-xl px-6 py-3.5 text-xs font-mono font-black uppercase tracking-widest cursor-pointer"
+            >
+              GENERATE CORPORATE POSTMORTEM EXCUSE
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="rounded-xl border border-slate-800 bg-obsidian p-5 font-mono text-xs space-y-2">
+            <div class="text-[10px] text-slate-500 uppercase">OFFICIAL ROOT CAUSE STATEMENT:</div>
+            <p id="excuse-output" class="text-neon-green text-sm font-bold leading-relaxed">
+              "An undocumented legacy cron job written by a former contractor in 2018 collided with a leap-second BGP route flap in us-east-1."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a
+        href={withBase('/register')}
+        class="btn-casino-primary inline-flex items-center gap-3 rounded-xl px-8 py-4 text-sm font-mono font-black uppercase tracking-widest"
+      >
+        <span>READY TO TEST YOUR LUCK? CREATE YOUR VIP ACCOUNT →</span>
+      </a>
+    </div>
+
+    <SecurityPromoBanner variant="banner" />
+  </section>
+
+  <script is:inline>
+    const excuseBtn = document.getElementById('generate-excuse-btn');
+    const excuseOut = document.getElementById('excuse-output');
+    const excuses = [
+      '"An undocumented legacy cron job written by a former contractor in 2018 collided with a leap-second BGP route flap in us-east-1."',
+      '"Our AI coding assistant hallucinated a `DROP DATABASE` statement inside a harmless CSS hover transition."',
+      '"It was DNS. Even when the database volume was manually formatted, our investigation concludes it was ultimately DNS."',
+      '"Kubernetes achieved brief sentience at 03:14 UTC and decided to evict itself to reduce cloud carbon emissions."',
+      '"The previous developer hardcoded their personal SSH key into the load balancer health check and then expired their GitHub account."'
+    ];
+    let idx = 0;
+    if (excuseBtn && excuseOut) {
+      excuseBtn.addEventListener('click', () => {
+        idx = (idx + 1) % excuses.length;
+        excuseOut.textContent = excuses[idx];
+      });
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SecurityPromoBanner from '../components/SecurityPromoBanner.astro';
+import CyberIcon from '../components/CyberIcon.astro';
+
+const commandments = [
+  {
+    num: '01',
+    rule: "Never gamble with infrastructure you don't own.",
+    detail: "Wagering a client's production database without written authorization from their legal department is strictly frowned upon (unless it's a Friday and you have root)."
+  },
+  {
+    num: '02',
+    rule: "Don't bet what you can't restore.",
+    detail: "Remember: having an automated backup script is not the same as having a working restore procedure. If you haven't tested your restore in the last 90 days, you're already playing Database Poker."
+  },
+  {
+    num: '03',
+    rule: "Always keep a cold backup offline.",
+    detail: "Preferably on magnetic tape stored inside a Faraday cage in a jurisdiction that does not extradite SysAdmins."
+  },
+  {
+    num: '04',
+    rule: "Never play during production deployments.",
+    detail: "Combining active CI/CD rollouts with a round of AWS Roulette increases the probability of a Resume-Generating Event (RGE) by 840%."
+  },
+  {
+    num: '05',
+    rule: "Know when to walk away from the terminal.",
+    detail: "If you have typed `sudo` more than four times in 60 seconds while muttering 'why isn't this working', close your laptop immediately and step away from the table."
+  },
+  {
+    num: '06',
+    rule: "Never chase losses with `git push --force`.",
+    detail: "Trying to fix a broken production deployment by force-pushing unreviewed hotfixes directly to `main` is the DevOps equivalent of taking out a payday loan at the blackjack table."
+  }
+];
+
+const warningSigns = [
+  "You feel a surge of dopamine when editing live files directly inside a running production container via `kubectl exec -it`.",
+  "You have disabled branch protection rules 'just for five minutes' more than three times this week.",
+  "You hide your AWS Cost Explorer tab whenever your spouse or CFO walks into the room.",
+  "You genuinely believe `chmod -R 777` is a valid troubleshooting step for permission errors.",
+  "You refer to customer outage reports on Twitter as 'free external monitoring'."
+];
+---
+
+<BaseLayout
+  title="Responsible Infrastructure Gambling — sshCasino | Know Your Uptime Limits"
+  description="Never gamble with infrastructure you don't own. Read sshCasino's Responsible Gambling policy and self-assessment checklist for thrill-seeking SysAdmins."
+>
+  <section class="py-14 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <!-- Header -->
+    <div class="max-w-3xl space-y-4">
+      <div class="inline-flex items-center gap-2 rounded-full border border-neon-red/40 bg-neon-red/10 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-neon-red">
+        <CyberIcon name="alert" class="w-4 h-4" />
+        <span>PLAYER PROTECTION & UPTIME SOBRIETY</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-display font-black text-white">
+        RESPONSIBLE <span class="text-neon-gold">INFRASTRUCTURE GAMBLING</span>
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+        When the thrill of running untested shell scripts as `root` stops being fun and starts becoming a front-page story on HackerNews, it's time to pause and reflect.
+      </p>
+    </div>
+
+    <!-- 6 Golden Rules -->
+    <div>
+      <h2 class="text-2xl sm:text-3xl font-display font-bold text-white mb-6">
+        The 6 Golden Rules of the Floor
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {commandments.map((c) => (
+          <div class="rounded-2xl border border-slate-800 bg-card p-6 space-y-3 hover:border-neon-gold/50 transition">
+            <div class="text-xs font-mono font-black text-neon-green">RULE #{c.num}</div>
+            <h3 class="text-lg font-display font-bold text-white">{c.rule}</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">{c.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Warning Signs & Emergency Self-Exclusion -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <!-- Warning Signs -->
+      <div class="lg:col-span-7 rounded-2xl border border-slate-800 bg-card p-6 sm:p-8 space-y-5">
+        <div class="text-xs font-mono uppercase tracking-widest text-neon-gold">
+          SELF-ASSESSMENT DIAGNOSTIC
+        </div>
+        <h2 class="text-2xl font-display font-bold text-white">
+          Do You Have a Production Gambling Problem?
+        </h2>
+        <p class="text-xs font-mono text-slate-400">
+          If you answer "Yes" to two or more of the following symptoms, please hand your YubiKey to a trusted colleague immediately:
+        </p>
+        <ul class="space-y-3 text-sm text-slate-200">
+          {warningSigns.map((sign) => (
+            <li class="flex items-start gap-3">
+              <span class="text-neon-red font-mono font-bold mt-0.5">[!]</span>
+              <span>{sign}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Self-Exclusion Hotline Box -->
+      <div class="lg:col-span-5 rounded-2xl border border-neon-red/40 bg-vault p-6 sm:p-8 flex flex-col justify-between space-y-6">
+        <div class="space-y-4">
+          <div class="text-xs font-mono uppercase tracking-widest text-neon-red">
+            24/7 EMERGENCY INTERVENTION
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white">
+            Voluntary Root Self-Exclusion Program
+          </h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Need to cool off before Friday afternoon? Enroll in our <strong>Self-Exclusion Registry</strong> by running the following command on your workstation:
+          </p>
+          <div class="rounded-xl border border-slate-800 bg-black p-4 font-mono text-xs text-neon-green">
+            <div>$ sudo usermod -L $(whoami)</div>
+            <div class="text-slate-500 mt-1"># Or call our 24/7 Incident Intervention Hotline:</div>
+            <div class="text-neon-gold font-bold mt-0.5">1-800-RM-RF-SLASH</div>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <button
+            id="panic-freeze-btn"
+            type="button"
+            class="btn-casino-danger w-full rounded-xl py-3.5 text-xs font-mono font-black uppercase tracking-widest cursor-pointer"
+          >
+            ACTIVATE FRIDAY DEPLOYMENT FREEZE (REDIRECT TO SYSTEM4US.COM)
+          </button>
+          <a
+            href="https://system4us.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-casino-primary block text-center w-full rounded-xl py-3.5 text-xs font-mono font-black uppercase tracking-widest"
+          >
+            GET REAL INFRASTRUCTURE PROTECTION AT SYSTEM4US.COM ↗
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <SecurityPromoBanner variant="banner" />
+  </section>
+
+  <script is:inline>
+    const freezeBtn = document.getElementById('panic-freeze-btn');
+    if (freezeBtn) {
+      freezeBtn.addEventListener('click', () => {
+        freezeBtn.textContent = '[LOCKED] REDIRECTING TO SYSTEM4US.COM...';
+        freezeBtn.classList.remove('text-neon-red', 'border-neon-red');
+        freezeBtn.classList.add('text-neon-green', 'border-neon-green', 'bg-neon-green/20');
+        setTimeout(() => {
+          window.location.href = 'https://system4us.com';
+        }, 800);
+      });
+    }
+  </script>
+</BaseLayout>

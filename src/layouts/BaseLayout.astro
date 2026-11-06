@@ -1,0 +1,419 @@
+---
+import SecurityPromoBanner from '../components/SecurityPromoBanner.astro';
+import CyberIcon from '../components/CyberIcon.astro';
+import IntrusionPopups from '../components/IntrusionPopups.astro';
+import { withBase } from '../data/casinoData';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "sshCasino — The World's Most Dangerous Casino for Production Infrastructure",
+  description = "YOUR KEYS. OUR TABLE. The world's first high-stakes online casino where your production infrastructure, SSH keys, and cloud billing accounts are always on the felt."
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: withBase('/'), label: 'Home' },
+  { href: withBase('/games'), label: 'Our Games' },
+  { href: withBase('/how-it-works'), label: 'How It Works' },
+  { href: withBase('/hall-of-fame'), label: 'Hall of Fame' },
+  { href: withBase('/security'), label: 'Security & Trust' },
+  { href: withBase('/responsible-gambling'), label: 'Responsible Gambling' },
+  { href: withBase('/about'), label: 'About Us' },
+];
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <style is:global>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        background-color: #06080a;
+        color: #e2e8f0;
+        font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+        background-image:
+          radial-gradient(circle at 15% 10%, rgba(0, 255, 102, 0.06) 0%, transparent 35%),
+          radial-gradient(circle at 85% 20%, rgba(255, 42, 84, 0.06) 0%, transparent 35%),
+          radial-gradient(circle at 50% 80%, rgba(234, 179, 8, 0.05) 0%, transparent 40%),
+          linear-gradient(to bottom, rgba(11, 15, 20, 0.9), rgba(6, 8, 10, 1));
+      }
+      .scanline-grid {
+        background-size: 40px 40px;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      }
+      @keyframes marquee {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 42s linear infinite;
+      }
+      .animate-marquee:hover {
+        animation-play-state: paused;
+      }
+      /* Luxury Obsidian & Cyber Neon Button System */
+      .btn-casino-primary {
+        position: relative;
+        background: linear-gradient(135deg, rgba(0, 255, 102, 0.16) 0%, rgba(6, 8, 10, 0.96) 55%, rgba(0, 240, 255, 0.14) 100%);
+        border: 1px solid rgba(0, 255, 102, 0.65);
+        color: #00ff66;
+        box-shadow: 0 0 22px rgba(0, 255, 102, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .btn-casino-primary:hover {
+        background: linear-gradient(135deg, rgba(0, 255, 102, 0.28) 0%, rgba(11, 18, 24, 0.98) 55%, rgba(0, 240, 255, 0.25) 100%);
+        border-color: #00ff66;
+        color: #ffffff;
+        box-shadow: 0 0 32px rgba(0, 255, 102, 0.42), inset 0 0 14px rgba(0, 255, 102, 0.2);
+        transform: translateY(-1px);
+      }
+      .btn-casino-danger {
+        position: relative;
+        background: linear-gradient(135deg, rgba(255, 42, 84, 0.22) 0%, rgba(10, 6, 10, 0.96) 55%, rgba(234, 179, 8, 0.14) 100%);
+        border: 1px solid rgba(255, 42, 84, 0.7);
+        color: #ff2a54;
+        box-shadow: 0 0 24px rgba(255, 42, 84, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .btn-casino-danger:hover {
+        background: linear-gradient(135deg, rgba(255, 42, 84, 0.38) 0%, rgba(18, 8, 14, 0.98) 55%, rgba(234, 179, 8, 0.22) 100%);
+        border-color: #ff2a54;
+        color: #ffffff;
+        box-shadow: 0 0 35px rgba(255, 42, 84, 0.45), inset 0 0 14px rgba(255, 42, 84, 0.25);
+        transform: translateY(-1px);
+      }
+      .btn-casino-gold {
+        position: relative;
+        background: linear-gradient(135deg, rgba(234, 179, 8, 0.18) 0%, rgba(10, 12, 16, 0.96) 55%, rgba(0, 255, 102, 0.12) 100%);
+        border: 1px solid rgba(234, 179, 8, 0.6);
+        color: #facc15;
+        box-shadow: 0 0 20px rgba(234, 179, 8, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .btn-casino-gold:hover {
+        background: linear-gradient(135deg, rgba(234, 179, 8, 0.3) 0%, rgba(14, 16, 22, 0.98) 55%, rgba(0, 255, 102, 0.22) 100%);
+        border-color: #facc15;
+        color: #ffffff;
+        box-shadow: 0 0 30px rgba(234, 179, 8, 0.38), inset 0 0 12px rgba(234, 179, 8, 0.2);
+        transform: translateY(-1px);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col selection:bg-neon-green selection:text-obsidian scanline-grid">
+    <!-- TOP LIVE TELEMETRY & MARQUEE BAR -->
+    <div class="bg-[#040608] border-b border-slate-800/80 text-[11px] font-mono">
+      <div class="max-w-7xl mx-auto px-4 py-1.5 flex items-center justify-between gap-4 whitespace-nowrap overflow-x-auto border-b border-slate-900">
+        <div class="flex items-center gap-2.5 text-slate-400 shrink-0">
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-neon-green/15 text-neon-green border border-neon-green/30 font-bold shrink-0">
+            <span class="h-1.5 w-1.5 rounded-full bg-neon-green animate-pulse"></span>
+            <span>MAINNET CLUSTER // VIP FLOOR OPEN</span>
+          </span>
+          <span class="hidden lg:inline text-slate-400 truncate">
+            Provably Questionable Odds • Zero-Latency Root Stakes • License #00-777
+          </span>
+        </div>
+        <div class="flex items-center gap-4 text-[11px] shrink-0">
+          <span class="text-neon-green inline-flex items-center gap-1.5 whitespace-nowrap">
+            <span class="h-2 w-2 rounded-full bg-neon-green animate-ping shrink-0"></span>
+            <strong id="online-sysadmins-count" class="text-white">1,337</strong>
+            <span>Active High-Rollers</span>
+          </span>
+          <span class="hidden sm:inline text-slate-700">|</span>
+          <span class="hidden sm:inline-flex items-center gap-1 text-neon-gold whitespace-nowrap">
+            <span>HOUSE VAULT:</span>
+            <strong id="global-jackpot-counter" class="text-white">42,891</strong>
+            <span>Root Keys</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Scrolling Live Disasters Feed -->
+      <div class="overflow-hidden py-1.5 bg-obsidian/90 text-slate-400">
+        <div class="animate-marquee space-x-10">
+          <span><strong class="text-neon-green">[MEGA JACKPOT]</strong> <code class="text-white">E-lon (technoking@x-prod)</code> survived 5 chambers in DevOps Russian Roulette, unplugged 3,400 servers & won <strong class="text-neon-gold">+$120M/yr in cloud savings!</strong></span>
+          <span><strong class="text-neon-gold">[NATURAL 21]</strong> <code class="text-white">linus_git_force</code> beat the SSH Blackjack Dealer with a live kernel patch — won <strong class="text-neon-green">+10,000 Root Keys!</strong></span>
+          <span><strong class="text-neon-red">[LIQUIDATED]</strong> <code class="text-white">root@prod-db-01</code> went ALL-IN on Database Poker without a WHERE clause and lost 19M customer rows!</span>
+          <span><strong class="text-neon-green">[JACKPOT]</strong> <code class="text-white">jeff_b@aws-yacht</code> collected another <strong class="text-neon-gold">+$480,000 NAT Gateway payout</strong> from AWS Roulette!</span>
+          <span><strong class="text-neon-cyan">[SNAKE EYES]</strong> <code class="text-white">sre_oncall</code> rolled 1-1 in Kubernetes Craps — <code class="text-neon-red">etcd</code> quorum permanently lost!</span>
+          <!-- Duplicate for seamless loop -->
+          <span><strong class="text-neon-green">[MEGA JACKPOT]</strong> <code class="text-white">E-lon (technoking@x-prod)</code> survived 5 chambers in DevOps Russian Roulette, unplugged 3,400 servers & won <strong class="text-neon-gold">+$120M/yr in cloud savings!</strong></span>
+          <span><strong class="text-neon-gold">[NATURAL 21]</strong> <code class="text-white">linus_git_force</code> beat the SSH Blackjack Dealer with a live kernel patch — won <strong class="text-neon-green">+10,000 Root Keys!</strong></span>
+          <span><strong class="text-neon-red">[LIQUIDATED]</strong> <code class="text-white">root@prod-db-01</code> went ALL-IN on Database Poker without a WHERE clause and lost 19M customer rows!</span>
+          <span><strong class="text-neon-green">[JACKPOT]</strong> <code class="text-white">jeff_b@aws-yacht</code> collected another <strong class="text-neon-gold">+$480,000 NAT Gateway payout</strong> from AWS Roulette!</span>
+          <span><strong class="text-neon-cyan">[SNAKE EYES]</strong> <code class="text-white">sre_oncall</code> rolled 1-1 in Kubernetes Craps — <code class="text-neon-red">etcd</code> quorum permanently lost!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-obsidian/85 border-b border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        <!-- Logo -->
+        <a href={withBase('/')} class="flex items-center gap-3 group">
+          <div class="h-11 w-11 rounded-xl bg-gradient-to-br from-neon-green/20 via-vault to-neon-red/20 border border-neon-green/60 flex items-center justify-center shadow-neon-green group-hover:scale-105 transition">
+            <span class="font-mono font-black text-neon-green text-sm tracking-tighter">&gt;_777</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono font-bold text-xl tracking-tight text-white">ssh</span><span class="font-display font-black text-xl tracking-wider uppercase text-neon-gold">Casino</span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neon-gold/15 text-neon-gold border border-neon-gold/30">VIP ROOT</span>
+            </div>
+            <p class="text-[10px] font-mono text-neon-green tracking-widest uppercase font-bold">
+              Guns, cars, girls, keys. Join the crew.
+            </p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden xl:flex items-center gap-1">
+          {navLinks.map((link) => {
+            const homeHref = withBase('/');
+            const active = currentPath === link.href || currentPath === `${link.href}/` || (link.href !== homeHref && currentPath.startsWith(link.href));
+            return (
+              <a
+                href={link.href}
+                class={`px-3 py-2 rounded-lg text-xs font-mono uppercase tracking-wider transition ${
+                  active
+                    ? 'bg-neon-green/15 text-neon-green border border-neon-green/40 font-bold'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
+        </nav>
+
+        <!-- Right CTA -->
+        <div class="flex items-center gap-3">
+          <a
+            href={withBase('/register')}
+            class="btn-casino-primary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-mono font-black uppercase tracking-widest"
+          >
+            <CyberIcon name="dice" class="w-4 h-4" />
+            <span>JOIN THE CASINO</span>
+          </a>
+          <!-- Mobile Menu Toggle -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="xl:hidden inline-flex items-center justify-center p-2 rounded-lg border border-slate-700 text-slate-300 hover:text-white hover:border-neon-green"
+            aria-label="Open navigation menu"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden xl:hidden border-t border-slate-800 bg-vault px-4 pt-3 pb-6 space-y-2">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block px-3 py-2.5 rounded-lg text-xs font-mono uppercase tracking-wider text-slate-200 hover:bg-neon-green/10 hover:text-neon-green"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href={withBase('/register')}
+          class="btn-casino-primary block text-center mt-3 rounded-xl px-4 py-3 text-xs font-mono font-black uppercase tracking-widest"
+        >
+          JOIN THE CASINO (CREATE ACCOUNT)
+        </a>
+      </div>
+    </header>
+
+    <!-- MAIN PAGE CONTENT -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- FLOATING LIVE WINNER TOAST -->
+    <div
+      id="simulated-toast"
+      class="fixed bottom-5 left-5 z-50 max-w-xs sm:max-w-sm rounded-xl border border-neon-gold/40 bg-vault/95 backdrop-blur-md p-4 shadow-2xl transition-all duration-300"
+    >
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-neon-gold">
+          <span class="h-2 w-2 rounded-full bg-neon-gold animate-ping"></span>
+          LIVE PIT TELEMETRY
+        </div>
+        <button
+          id="close-toast-btn"
+          type="button"
+          onclick="document.getElementById('simulated-toast').style.display='none'; window.sessionStorage.setItem('sshcasino_toast_closed','1');"
+          class="h-6 w-6 rounded-md border border-slate-700 bg-obsidian text-slate-300 hover:text-white hover:border-neon-red flex items-center justify-center text-xs font-mono cursor-pointer"
+          title="Dismiss"
+          aria-label="Close live pit telemetry"
+        >
+          ✕
+        </button>
+      </div>
+      <p id="toast-message" class="mt-1.5 text-xs font-mono text-slate-200 leading-relaxed">
+        <strong class="text-neon-gold">[JACKPOT]</strong> <strong class="text-neon-green">E-lon</strong> just hit a 5-Click Mega Jackpot in DevOps Russian Roulette — <strong class="text-neon-green">+$120M/yr saved!</strong>
+      </p>
+    </div>
+
+    <!-- ANNOYING DARKWEB / IDS INTRUSION POPUPS -->
+    <IntrusionPopups />
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800/90 bg-[#040608] mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <SecurityPromoBanner variant="compact" />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mt-12 pb-12 border-b border-slate-800/80">
+          <!-- Col 1-2: Brand -->
+          <div class="lg:col-span-2 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="h-9 w-9 rounded-lg bg-neon-green/15 border border-neon-green/50 flex items-center justify-center">
+                <span class="font-mono font-black text-neon-green text-xs">&gt;_777</span>
+              </div>
+              <span class="font-mono font-bold text-lg text-white">ssh<span class="text-neon-gold">Casino</span></span>
+            </div>
+            <p class="text-sm text-slate-400 max-w-md leading-relaxed">
+              The world's most dangerous high-stakes casino for production infrastructure. Where <code class="text-neon-green font-mono text-xs">sudo rm -rf /</code> meets Monte Carlo luxury.
+            </p>
+            <p class="text-xs font-mono text-neon-gold font-black uppercase tracking-widest">
+              "Guns, cars, girls, keys. Join the crew."
+            </p>
+            <p class="text-xs font-mono text-neon-red font-semibold">
+              "The house always wins. Production doesn't."
+            </p>
+          </div>
+
+          <!-- Col 3: Casino Floor -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-neon-gold">Casino Floor</h3>
+            <ul class="space-y-2 text-xs font-mono text-slate-400">
+              <li><a href={withBase('/games#ssh-blackjack')} class="hover:text-neon-green transition">SSH Blackjack</a></li>
+              <li><a href={withBase('/games#aws-roulette')} class="hover:text-neon-green transition">AWS Roulette</a></li>
+              <li><a href={withBase('/games#database-poker')} class="hover:text-neon-green transition">Database Poker</a></li>
+              <li><a href={withBase('/games#kubernetes-craps')} class="hover:text-neon-green transition">Kubernetes Craps</a></li>
+              <li><a href={withBase('/games#devops-russian-roulette')} class="hover:text-neon-green transition">DevOps Russian Roulette</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Navigation -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-neon-gold">High Rollers</h3>
+            <ul class="space-y-2 text-xs font-mono text-slate-400">
+              <li><a href={withBase('/how-it-works')} class="hover:text-neon-green transition">How It Works</a></li>
+              <li><a href={withBase('/hall-of-fame')} class="hover:text-neon-green transition">Hall of Fame & Wall of Shame</a></li>
+              <li><a href={withBase('/register')} class="hover:text-neon-green transition">VIP Account Registration</a></li>
+              <li><a href={withBase('/about')} class="hover:text-neon-green transition">About the Pit Bosses</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 5: Compliance & Real Security -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-neon-gold">Trust & Compliance</h3>
+            <ul class="space-y-2 text-xs font-mono text-slate-400">
+              <li><a href={withBase('/security')} class="hover:text-neon-green transition">Post-Quantum & SOC 2 Type III</a></li>
+              <li><a href={withBase('/responsible-gambling')} class="hover:text-neon-green transition">Responsible Infrastructure Gambling</a></li>
+              <li><a href={withBase('/security#privacy-terms')} class="hover:text-neon-green transition">Ephemeral `/tmp` Privacy Policy</a></li>
+              <li><a href="https://system4us.com" target="_blank" rel="noopener noreferrer" class="text-neon-green font-bold hover:underline">system4us.com Security Platform ↗</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Deadpan Fine Print -->
+        <div class="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+          <div class="space-y-1 max-w-3xl">
+            <p class="text-slate-400 font-semibold">
+              REGULATORY NOTICE: sshCasino operates under Offshore Kernel License #UID-0 issued by the Principality of /dev/null.
+            </p>
+            <p>
+              All wagers are settled in ephemeral uptime credits, cloud egress invoices, and postmortem action items. House edge is mathematically enforced by Murphy's Law and us-east-1 DNS propagation.
+            </p>
+          </div>
+          <div class="text-right shrink-0">
+            <p>© {new Date().getFullYear()} sshCasino International Ltd.</p>
+            <p class="text-neon-green">Licensed in /dev/null Gaming Authority.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- GLOBAL INTERACTIVE SCRIPTS (Simulated Counters & Live Toasts) -->
+    <script is:inline>
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Simulated online SysAdmins & Jackpot counters
+      const onlineEl = document.getElementById('online-sysadmins-count');
+      const jackpotEl = document.getElementById('global-jackpot-counter');
+      let currentOnline = 1337;
+      let currentJackpot = 42891;
+
+      setInterval(() => {
+        const delta = Math.floor(Math.random() * 15) - 6;
+        currentOnline = Math.max(1024, currentOnline + delta);
+        currentJackpot += Math.floor(Math.random() * 4) + 1;
+        if (onlineEl) onlineEl.textContent = currentOnline.toLocaleString();
+        if (jackpotEl) jackpotEl.textContent = currentJackpot.toLocaleString();
+      }, 3500);
+
+      // Simulated Live Incident Toast rotator
+      const toastEl = document.getElementById('simulated-toast');
+      const toastMsgEl = document.getElementById('toast-message');
+      const closeToastBtn = document.getElementById('close-toast-btn');
+      let toastDismissed = window.sessionStorage.getItem('sshcasino_toast_closed') === '1';
+
+      if (toastDismissed && toastEl) {
+        toastEl.style.display = 'none';
+      }
+
+      if (closeToastBtn && toastEl) {
+        closeToastBtn.addEventListener('click', () => {
+          toastDismissed = true;
+          toastEl.style.display = 'none';
+          window.sessionStorage.setItem('sshcasino_toast_closed', '1');
+        });
+      }
+
+      const simulatedEvents = [
+        '<strong class="text-neon-gold">[JACKPOT]</strong> <strong class="text-neon-green">E-lon</strong> hit a 5-Click Mega Jackpot in DevOps Russian Roulette — <strong class="text-neon-green">+$120M/yr saved</strong> by unplugging Sacramento racks!',
+        '<strong class="text-neon-green">[21 WIN]</strong> <strong class="text-neon-green">linus_git_force</strong> drew a Natural 21 in SSH Blackjack and won <strong class="text-neon-gold">10,000 Root Keys</strong> from the House!',
+        '<strong class="text-neon-red">[OUTAGE]</strong> <strong class="text-neon-gold">cloud_architect_99</strong> landed on <code class="text-neon-red">00 (us-east-1)</code> in AWS Roulette — Jeff Bezos just bought another superyacht thruster!',
+        '<strong class="text-neon-cyan">[BLUFF]</strong> <strong class="text-neon-cyan">database_admin</strong> bluffed the board in Database Poker, called a DB wipe "GDPR compliance" and won a <strong class="text-neon-green">+$45,000 bonus!</strong>',
+        '<strong class="text-neon-red">[CRAPS]</strong> <strong class="text-neon-red">sre_intern</strong> rolled Snake Eyes in Kubernetes Craps and evicted all 140 production nodes!'
+      ];
+      let eventIndex = 0;
+
+      setInterval(() => {
+        if (toastDismissed || !toastEl || !toastMsgEl) return;
+        eventIndex = (eventIndex + 1) % simulatedEvents.length;
+        toastMsgEl.innerHTML = simulatedEvents[eventIndex];
+      }, 8000);
+    </script>
+  </body>
+</html>

