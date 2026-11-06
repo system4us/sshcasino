@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CyberIcon from '../components/CyberIcon.astro';
+import { withBase } from '../data/casinoData';
 
 const certifications = [
   {
@@ -121,17 +122,15 @@ const certifications = [
 
         <div class="pt-4 flex flex-wrap items-center gap-4">
           <a
-            href="https://system4us.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={withBase('/coming-soon')}
             class="btn-casino-primary inline-flex items-center gap-3 rounded-xl px-8 py-4 text-sm font-mono font-black uppercase tracking-widest"
           >
             <CyberIcon name="shield" class="w-4 h-4" />
-            <span>PROTECT YOUR INFRASTRUCTURE AT SYSTEM4US.COM</span>
-            <span aria-hidden="true">↗</span>
+            <span>PROTECT YOUR INFRASTRUCTURE (COMING SOON)</span>
+            <span aria-hidden="true">→</span>
           </a>
           <span class="text-xs font-mono text-slate-400">
-            Stop gambling with production access. Visit system4us.com.
+            Stop gambling with production access. Enterprise Security Platform launching soon.
           </span>
         </div>
       </div>

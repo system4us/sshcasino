@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SecurityPromoBanner from '../components/SecurityPromoBanner.astro';
 import CyberIcon from '../components/CyberIcon.astro';
+import { withBase } from '../data/casinoData';
 
 const commandments = [
   {
@@ -126,17 +127,16 @@ const warningSigns = [
           <button
             id="panic-freeze-btn"
             type="button"
+            data-redirect-url={withBase('/coming-soon')}
             class="btn-casino-danger w-full rounded-xl py-3.5 text-xs font-mono font-black uppercase tracking-widest cursor-pointer"
           >
-            ACTIVATE FRIDAY DEPLOYMENT FREEZE (REDIRECT TO SYSTEM4US.COM)
+            ACTIVATE FRIDAY DEPLOYMENT FREEZE (COMING SOON)
           </button>
           <a
-            href="https://system4us.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={withBase('/coming-soon')}
             class="btn-casino-primary block text-center w-full rounded-xl py-3.5 text-xs font-mono font-black uppercase tracking-widest"
           >
-            GET REAL INFRASTRUCTURE PROTECTION AT SYSTEM4US.COM ↗
+            GET REAL INFRASTRUCTURE PROTECTION (COMING SOON) →
           </a>
         </div>
       </div>
@@ -149,11 +149,12 @@ const warningSigns = [
     const freezeBtn = document.getElementById('panic-freeze-btn');
     if (freezeBtn) {
       freezeBtn.addEventListener('click', () => {
-        freezeBtn.textContent = '[LOCKED] REDIRECTING TO SYSTEM4US.COM...';
+        freezeBtn.textContent = '[LOCKED] REDIRECTING TO SECURITY VAULT...';
         freezeBtn.classList.remove('text-neon-red', 'border-neon-red');
         freezeBtn.classList.add('text-neon-green', 'border-neon-green', 'bg-neon-green/20');
+        const targetUrl = freezeBtn.getAttribute('data-redirect-url') || '/coming-soon';
         setTimeout(() => {
-          window.location.href = 'https://system4us.com';
+          window.location.href = targetUrl;
         }, 800);
       });
     }

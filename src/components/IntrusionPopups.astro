@@ -1,9 +1,11 @@
 ---
 import CyberIcon from './CyberIcon.astro';
+import { withBase } from '../data/casinoData';
+const comingSoonUrl = withBase('/coming-soon');
 ---
 
 <!-- FLOATING CHAOS POPUPS CONTAINER -->
-<div id="chaos-popups-layer" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
+<div id="chaos-popups-layer" data-coming-soon-url={comingSoonUrl} class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
 
 <!-- DISCREET TOGGLE IN BOTTOM RIGHT TO MUTE/UNMUTE INTRUSION POPUPS -->
 <div class="fixed bottom-4 right-4 z-50 flex items-center gap-2">
@@ -26,6 +28,7 @@ import CyberIcon from './CyberIcon.astro';
     const dot = document.getElementById('chaos-indicator-dot');
 
     if (!layer) return;
+    const comingSoonUrl = layer.getAttribute('data-coming-soon-url') || '/coming-soon';
 
     let muted = window.sessionStorage.getItem('sshcasino_chaos_muted') === '1';
 
@@ -152,7 +155,7 @@ import CyberIcon from './CyberIcon.astro';
             $ ${item.cli}
           </div>
           <div class="flex items-center gap-2 pt-1">
-            <a href="https://system4us.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center rounded-lg bg-neon-red hover:bg-neon-gold hover:text-obsidian text-white py-2 px-2.5 text-[10px] font-black uppercase tracking-wider transition">
+            <a href="${comingSoonUrl}" class="flex-1 text-center rounded-lg bg-neon-red hover:bg-neon-gold hover:text-obsidian text-white py-2 px-2.5 text-[10px] font-black uppercase tracking-wider transition">
               ${item.btnPrimary}
             </a>
             <button type="button" class="popup-dismiss-btn rounded-lg border border-slate-700 bg-obsidian hover:border-neon-green text-slate-300 hover:text-neon-green py-2 px-3 text-[10px] font-bold uppercase tracking-wider transition cursor-pointer">

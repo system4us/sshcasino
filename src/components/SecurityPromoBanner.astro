@@ -1,5 +1,6 @@
 ---
 import CyberIcon from './CyberIcon.astro';
+import { withBase } from '../data/casinoData';
 
 interface Props {
   variant?: 'banner' | 'compact';
@@ -56,13 +57,11 @@ const { variant = 'banner' } = Astro.props;
             </p>
           </div>
           <a
-            href="https://system4us.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={withBase('/coming-soon')}
             class="btn-casino-primary w-full inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-xs font-mono font-black uppercase tracking-widest"
           >
-            <span>DISCOVER SYSTEM4US.COM</span>
-            <span aria-hidden="true">↗</span>
+            <span>ENTERPRISE SECURITY (COMING SOON)</span>
+            <span aria-hidden="true">→</span>
           </a>
         </div>
       </div>
@@ -76,16 +75,14 @@ const { variant = 'banner' } = Astro.props;
         <span>TIRED OF GAMBLING WITH UNMANAGED SSH KEYS?</span>
       </div>
       <p class="text-xs text-slate-300">
-        Your production is not a gambling chip. Lock down SSH, Kubernetes & Database access at <strong class="text-white">system4us.com</strong> before the House wins.
+        Your production is not a gambling chip. Lock down SSH, Kubernetes & Database access with our <strong class="text-white">Enterprise Security Platform (Coming Soon)</strong> before the House wins.
       </p>
     </div>
     <a
-      href="https://system4us.com"
-      target="_blank"
-      rel="noopener noreferrer"
+      href={withBase('/coming-soon')}
       class="btn-casino-primary shrink-0 rounded-xl px-5 py-3 text-xs font-mono font-black uppercase tracking-widest"
     >
-      VISIT SYSTEM4US.COM ↗
+      SECURITY PLATFORM (COMING SOON) →
     </a>
   </div>
 )}

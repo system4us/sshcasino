@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CyberIcon from '../components/CyberIcon.astro';
+import { withBase } from '../data/casinoData';
+
+const upcomingFeatures = [
+  {
+    code: 'MOD_01 // ZERO-STANDING PRIVILEGE',
+    title: 'Ephemeral Just-In-Time SSH & K8s Certificates',
+    desc: 'Eliminate static ~/.ssh/id_rsa files and permanent cluster-admin bindings. Issue cryptographic certificates that self-destruct the second the maintenance window closes.'
+  },
+  {
+    code: 'MOD_02 // IMMUTABLE TELEMETRY',
+    title: 'Real-Time Session Recording & Command Interception',
+    desc: 'Every interactive shell, kubectl exec, and production SQL query is logged at the protocol layer—stopping catastrophic commands before they wipe your tables.'
+  },
+  {
+    code: 'MOD_03 // AUTOMATED GOVERNANCE',
+    title: 'Instant Peer-Reviewed Break-Glass Workflows',
+    desc: 'Request temporary production access directly from Slack or PagerDuty with cryptographic approval gates and zero shared bastions.'
+  }
+];
+---
+
+<BaseLayout
+  title="Enterprise Security Platform (Coming Soon) — sshCasino"
+  description="Stop gambling with production access. Our next-generation Zero-Trust & Ephemeral Infrastructure Security Platform is launching soon."
+>
+  <section class="py-14 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+    <!-- Hero Card -->
+    <div class="relative overflow-hidden rounded-3xl border-2 border-neon-green/60 bg-gradient-to-br from-[#06150e] via-vault to-obsidian p-8 sm:p-12 shadow-neon-green">
+      <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-neon-green/10 blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-neon-cyan/10 blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 space-y-6">
+        <div class="inline-flex items-center gap-2.5 rounded-full border border-neon-green/50 bg-neon-green/15 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-neon-green">
+          <span class="h-2 w-2 rounded-full bg-neon-green animate-ping"></span>
+          <span>STEALTH DEPLOYMENT IN PROGRESS // COMING SOON</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-display font-black text-white leading-tight">
+          REAL INFRASTRUCTURE SECURITY IS <span class="text-neon-green">ALMOST HERE.</span>
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-3xl">
+          While <strong>sshCasino</strong> is a parody of the high-stakes risks teams take every day in production, our upcoming <strong>Enterprise Security Platform</strong> is built to end infrastructure gambling for good. We are currently finalizing our stealth rollout.
+        </p>
+
+        <!-- Simulated Terminal Status -->
+        <div class="rounded-2xl border border-slate-800 bg-black/90 p-5 font-mono text-xs sm:text-sm space-y-2 shadow-inner">
+          <div class="flex items-center justify-between border-b border-slate-800/80 pb-2.5 mb-3 text-[11px] text-slate-500">
+            <span>root@zero-trust-control-plane:~# status --release</span>
+            <span class="text-neon-gold font-bold">STAGE: PRE-FLIGHT AUDIT</span>
+          </div>
+          <div class="text-slate-400">$ initializing zero-standing-privilege engine... <span class="text-neon-green font-bold">[OK]</span></div>
+          <div class="text-slate-400">$ revoking static id_rsa &amp; shared bastion keys... <span class="text-neon-green font-bold">[OK]</span></div>
+          <div class="text-slate-400">$ provisioning ephemeral CA &amp; session recorder... <span class="text-neon-cyan font-bold">[94% COMPLETE]</span></div>
+          <div class="text-neon-gold pt-1 animate-pulse">&gt; PUBLIC LAUNCH WINDOW: OPENING SOON_</div>
+        </div>
+
+        <!-- Early Access / Notification Box -->
+        <div class="pt-4 border-t border-slate-800/80">
+          <form id="early-access-form" class="flex flex-col sm:flex-row gap-3 max-w-xl">
+            <input
+              type="email"
+              id="early-access-email"
+              required
+              placeholder="ciso@yourcompany.com"
+              class="flex-1 rounded-xl border border-slate-700 bg-obsidian/90 px-4 py-3.5 text-sm font-mono text-white placeholder-slate-500 focus:border-neon-green focus:outline-none"
+            />
+            <button
+              type="submit"
+              class="btn-casino-primary rounded-xl px-6 py-3.5 text-xs font-mono font-black uppercase tracking-widest cursor-pointer shrink-0"
+            >
+              NOTIFY ME ON LAUNCH
+            </button>
+          </form>
+          <p id="early-access-feedback" class="hidden mt-3 text-xs font-mono text-neon-green">
+            ✔ [REGISTERED] Your endpoint has been queued for early access notification.
+          </p>
+          <p class="mt-2 text-[11px] font-mono text-slate-500">
+            Zero spam. Stored locally in ephemeral session state until public portal activation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Preview Grid -->
+    <div class="space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl sm:text-2xl font-display font-bold text-white">
+          What's Launching in the Platform
+        </h2>
+        <span class="text-xs font-mono uppercase tracking-widest text-neon-gold">PREVIEW SPECS</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {upcomingFeatures.map((feat) => (
+          <div class="rounded-2xl border border-slate-800 bg-card p-6 space-y-3 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="inline-flex items-center gap-2 text-[11px] font-mono font-bold text-neon-green">
+                <CyberIcon name="shield" class="w-4 h-4 shrink-0" />
+                <span>{feat.code}</span>
+              </div>
+              <h3 class="text-lg font-display font-bold text-white">
+                {feat.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                {feat.desc}
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
+              <span class="text-slate-500">MODULE STATUS</span>
+              <span class="text-neon-gold font-bold">COMING SOON</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Back Navigation -->
+    <div class="rounded-2xl border border-slate-800 bg-vault p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="space-y-1 text-center sm:text-left">
+        <div class="text-xs font-mono font-bold uppercase tracking-widest text-neon-gold">
+          WHILE YOU WAIT FOR REAL SECURITY...
+        </div>
+        <p class="text-xs sm:text-sm text-slate-300">
+          Head back to the casino floor to test your luck on SSH Blackjack, AWS Roulette, or DevOps Russian Roulette.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3 shrink-0">
+        <a
+          href={withBase('/games')}
+          class="btn-casino-gold rounded-xl px-5 py-3 text-xs font-mono font-black uppercase tracking-widest"
+        >
+          RETURN TO CASINO FLOOR
+        </a>
+        <a
+          href={withBase('/')}
+          class="rounded-xl border border-slate-700 bg-obsidian hover:border-neon-green px-5 py-3 text-xs font-mono font-bold uppercase tracking-widest text-slate-300 hover:text-neon-green transition"
+        >
+          HOME
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    const form = document.getElementById('early-access-form');
+    const feedback = document.getElementById('early-access-feedback');
+    const emailInput = document.getElementById('early-access-email');
+    if (form && feedback && emailInput) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        feedback.classList.remove('hidden');
+        emailInput.value = '';
+      });
+    }
+  </script>
+</BaseLayout>
